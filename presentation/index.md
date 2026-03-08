@@ -10,11 +10,11 @@
 
 > AI amplifies what's already there. If the codebase has no standards, the agent will confidently produce more of the same mess. Standards come first.
 
-- [Codebase & Architecture Review](./phase1/codebase-architecture.md)
-- [Laravel Standards](./phase1/laravel-standards.md)
-- [Tooling Selection](./phase1/tooling-selection.md)
-- [Git Workflow](./phase1/git-workflow.md)
-- [Deployment](./phase1/deployment.md)
+- [1.1 Codebase & Architecture Review](./phase1/codebase-architecture.md)
+- [1.2 Laravel Standards](./phase1/laravel-standards.md)
+- [1.3 Tooling Selection](./phase1/tooling-selection.md)
+- [1.4 Git Workflow](./phase1/git-workflow.md)
+- [1.5 Deployment](./phase1/deployment.md)
 
 **Outcome:** Stable project + consistent codebase conventions + disciplined Git workflow — a clean foundation for AI
 
@@ -24,10 +24,10 @@
 
 **Goal:** Build the automated safety nets that allow the team to use AI assistance without fear of regression, and introduce AI as a supervised junior collaborator.
 
-- [Testing](./phase2/testing.md)
-- [CI Pipeline](./phase2/ci-pipeline.md)
-- [Environment](./phase2/environment.md)
-- [Supervised AI Introduction](./phase2/supervised-ai.md)
+- [2.1 Testing](./phase2/testing.md)
+- [2.2 CI Pipeline](./phase2/ci-pipeline.md)
+- [2.3 Environment](./phase2/environment.md)
+- [2.4 Supervised AI Introduction](./phase2/supervised-ai.md)
 
 **Outcome:** Automated safety net in place + team comfortable using AI under supervision
 
@@ -37,10 +37,10 @@
 
 **Goal:** Establish a structured Agentic Coding methodology the team can operate independently, with defined agent roles, KPIs, and internal policies.
 
-- [Agentic Methodology](./phase3/agentic-methodology.md)
-- [CI/CD Maturity](./phase3/cicd-maturity.md)
-- [Team Enablement](./phase3/team-enablement.md)
-- [Governance](./phase3/governance.md)
+- [3.1 Agentic Methodology](./phase3/agentic-methodology.md)
+- [3.2 CI/CD Maturity](./phase3/cicd-maturity.md)
+- [3.3 Team Enablement](./phase3/team-enablement.md)
+- [3.4 Governance](./phase3/governance.md)
 
 **Outcome:** Fully operational agentic team — independent, policy-driven, measurable
 
