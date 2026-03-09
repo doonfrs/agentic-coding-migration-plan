@@ -80,16 +80,7 @@ composer require laravel/pint --dev
 }
 ```
 
-**Enforce on every commit** via a Git pre-commit hook (`.git/hooks/pre-commit`):
-```bash
-#!/bin/bash
-./vendor/bin/pint --test
-if [ $? -ne 0 ]; then
-    echo "Code style issues found. Run ./vendor/bin/pint to fix them."
-    exit 1
-fi
-```
-*Make it executable: `chmod +x .git/hooks/pre-commit`*
+**Enforce on every commit** via a pre-commit hook — see [1.3 Tooling Selection → Pre-commit Hooks](03-tooling-selection.md#pre-commit-hooks) for the full setup including PHPStan and auto-install via composer.
 
 ---
 
@@ -175,11 +166,7 @@ trim_trailing_whitespace = false
 ## Checklist — Done When
 
 - [ ] `pint.json` committed to the repo
-- [ ] Pre-commit hook installed on all dev machines
 - [ ] `.editorconfig` committed to the repo
 - [ ] Naming convention doc shared with the team
 - [ ] Existing codebase formatted with Pint (one-time cleanup commit)
 - [ ] First PR reviewed against these standards
-test
-test
-test change
