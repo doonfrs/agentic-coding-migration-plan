@@ -1,81 +1,81 @@
-# 1.3 اختيار الأدوات
+# 1.3 Tooling Selection
 
-> المعايير بدون أدوات مجرد نوايا. الأدوات تطبّق المعايير تلقائياً — حتى عندما يكون الفريق متعباً أو مستعجلاً أو لا يتذكر القواعد.
+> Standards بدون tools مجرد نوايا. الـ tools تطبّق المعايير تلقائياً — حتى عندما يكون الفريق متعباً أو مستعجلاً أو لا يتذكر القواعد.
 
-> **الفصل عن 1.2:** قواعد أسلوب الكود موجودة في [1.2 معايير Laravel](02-laravel-standards.md). الأدوات التي تُطبّقها — IDE، الإضافات، pre-commit، التحليل الثابت — موجودة هنا.
+> **الفصل عن 1.2:** قواعد الـ coding style موجودة في [1.2 Laravel Standards](02-laravel-standards.md). الـ tools التي تُطبّقها — IDE، extensions، pre-commit، static analysis — موجودة هنا.
 
 ---
 
 ## الأهداف
 
 - اختيار IDE يدمج الذكاء الاصطناعي بشكل أصلي ويعمل جيداً مع Laravel
-- اختيار مساعد الذكاء الاصطناعي الذي سيستخدمه الفريق يومياً
-- تنسيق تلقائي عند الحفظ، فحص تلقائي عند الـ commit — صفر جهد يدوي
-- جعله مستحيلاً هيكلياً دفع كود يفشل في أسلوب الكتابة أو التحليل الثابت
+- اختيار AI assistant الذي سيستخدمه الفريق يومياً
+- auto-format عند الحفظ، auto-check عند الـ commit — صفر جهد يدوي
+- جعله مستحيلاً هيكلياً push كود يفشل في الـ style أو الـ static analysis
 
 ---
 
-## اختيار IDE
+## IDE Selection
 
 ### المرشحون
 
 | IDE | المزايا | العيوب |
 |-----|---------|--------|
-| **Anti-gravity** | ذكاء اصطناعي أصلي، سير عمل وكيلي مدمج، متوافق مع VS Code، مجاني | أحدث، مجتمع أصغر |
-| Cursor | يدمج الذكاء الاصطناعي، قاعدة VS Code مألوفة، شائع | مدفوع، الذكاء الاصطناعي طبقة اشتراك فوق المحرر |
-| VS Code | مجاني، منظومة إضافات ضخمة | لا ذكاء اصطناعي أصلي — يعتمد كلياً على الإضافات |
-| PhpStorm | أفضل ذكاء كودي لـ PHP/Laravel | مدفوع، ثقيل، ليس أصلياً للذكاء الاصطناعي |
+| **Anti-gravity** | AI-native، agentic workflows مدمجة، VS Code compatible، مجاني | أحدث، مجتمع أصغر |
+| Cursor | يدمج الذكاء الاصطناعي، قاعدة VS Code مألوفة، شائع | مدفوع، الذكاء الاصطناعي طبقة subscription فوق المحرر |
+| VS Code | مجاني، منظومة extensions ضخمة | لا AI أصلي — يعتمد كلياً على الـ extensions |
+| PhpStorm | أفضل code intelligence لـ PHP/Laravel | مدفوع، ثقيل، ليس AI-native |
 
 ### التوصية: Anti-gravity
 
-Anti-gravity محرر أصلي للذكاء الاصطناعي مبني من الصفر لسير عمل البرمجة الوكيلية. على عكس Cursor — الذي يضع الذكاء الاصطناعي فوق VS Code — يعامل Anti-gravity الذكاء الاصطناعي كجزء أساسي من سير العمل.
+Anti-gravity هو editor أصلي للذكاء الاصطناعي مبني من الصفر لـ agent-assisted coding. على عكس Cursor — الذي يضع الذكاء الاصطناعي فوق VS Code — يعامل Anti-gravity الذكاء الاصطناعي كجزء أساسي من سير العمل.
 
 **المزايا الرئيسية لهذا الانتقال:**
 
-- مبني للبرمجة الوكيلية — يتوافق مباشرة مع أهداف المرحلة الثالثة
-- متوافق مع إضافات VS Code — الإضافات والإعدادات الموجودة تعمل بنفس الطريقة
-- مجاني — لا تكلفة اشتراك لكل عضو في الفريق
-- يشجع على التفكير الأولي بالذكاء الاصطناعي من اليوم الأول
+- مبني للـ agentic coding — يتوافق مباشرة مع أهداف Phase 3
+- VS Code extension compatible — الـ extensions والـ settings الموجودة تعمل بنفس الطريقة
+- مجاني — لا per-seat subscription cost للفريق
+- يشجع على AI-first thinking من اليوم الأول
 
 ### لماذا لا Cursor؟
 
-Cursor خيار متين ومعتمد على نطاق واسع — لكنه يضع نفسه كمنتج الذكاء الاصطناعي، لا مجرد أداة. الفريق ينتهي به الأمر معتمداً على اشتراك Cursor للذكاء الاصطناعي بدلاً من بناء مهارات مع سير عمل مستقل عن النموذج.
+Cursor خيار متين ومعتمد على نطاق واسع — لكنه يضع نفسه كمنتج الذكاء الاصطناعي، لا مجرد أداة. الفريق ينتهي به الأمر معتمداً على Cursor subscription بدلاً من بناء مهارات مع model-agnostic workflow.
 
 > Anti-gravity + Claude Code = مجموعة أدوات تتحكم بها أنت. Cursor = مجموعة أدوات يتحكم بها شخص آخر.
 
 ---
 
-## مساعد الذكاء الاصطناعي للبرمجة
+## AI Coding Assistant
 
-### Claude Code مقابل Cursor AI
+### Claude Code vs Cursor AI
 
 | | **Claude Code** | Cursor AI |
 |--|-----------------|-----------|
-| النموذج | Claude Opus 4.6 — الأفضل في فئته للكود | GPT-4o / Claude (بحسب اختيارهم) |
-| الواجهة | Terminal + IDE agent | مدمج في Cursor فقط |
-| القدرة الوكيلية | وكيل كامل — يقرأ، يحرر، ينفذ أوامر | Composer mode (محدود) |
-| نافذة السياق | 200K token | سياق محدود |
-| قابلية النقل | يعمل في أي terminal، أي مستودع | Cursor فقط |
-| التكلفة | لكل token (تدفع لما تستخدمه) | اشتراك شهري |
-| تحكم الفريق | كامل — تختار النموذج والأوامر | مقيّد بتطبيق Cursor |
+| Model | Claude Opus 4.6 — best in class للكود | GPT-4o / Claude (بحسب اختيارهم) |
+| Interface | Terminal + IDE agent | مدمج في Cursor فقط |
+| Agentic capability | Full agent — يقرأ، يحرر، ينفذ أوامر | Composer mode (محدود) |
+| Context window | 200K tokens | context محدود |
+| Portability | يعمل في أي terminal، أي repository | Cursor فقط |
+| Cost | Per token (تدفع لما تستخدمه) | Monthly subscription |
+| Team control | كامل — تختار الـ model والـ prompts | مقيّد بتطبيق Cursor |
 
 ### التوصية: Claude Code
 
-Claude Code هو أداة الذكاء الاصطناعي لهذا الانتقال. يعمل كوكيل — وليس مجرد إكمال تلقائي — مما يعني أنه يستطيع قراءة كودك، تخطيط التغييرات، تشغيل الاختبارات، والتكرار. هذا هو أساس المرحلة الثالثة.
+Claude Code هو أداة الذكاء الاصطناعي لهذا الانتقال. يعمل كـ agent — وليس مجرد autocomplete — مما يعني أنه يستطيع قراءة الـ codebase، تخطيط التغييرات، تشغيل الـ tests، والتكرار. هذا هو أساس Phase 3.
 
 ### Claude Code: طريقتان للاستخدام
 
 Claude Code يأتي بشكلين — استخدم الاثنين، يكملان بعضهما البعض.
 
-#### 1. إضافة Claude Code لـ VS Code (الأساسية)
+#### 1. Claude Code VS Code Extension (الأساسية)
 
-ثبّتها مباشرة من سوق VS Code: **Claude Code** من Anthropic.
+ثبّتها مباشرة من VS Code marketplace: **Claude Code** من Anthropic.
 
-الإضافة تدمج Claude Code في الشريط الجانبي للـ IDE. تتفاعل معها دون مغادرة المحرر.
+الـ extension تدمج Claude Code في الـ IDE sidebar. تتفاعل معها دون مغادرة المحرر.
 
 **الأنسب لـ:**
 - طرح أسئلة حول الملف الذي تنظر إليه
-- طلب تعديلات محددة مع سياق IDE الكامل (الملفات المفتوحة، التحديد، الأخطاء)
+- طلب targeted edits مع IDE context الكامل (الملفات المفتوحة، التحديد، الأخطاء)
 - مراجعة وقبول/رفض تغييرات الذكاء الاصطناعي مباشرة
 - البرمجة اليومية — الطريقة منخفضة الاحتكاك للعمل مع الذكاء الاصطناعي
 
@@ -84,9 +84,9 @@ Claude Code يأتي بشكلين — استخدم الاثنين، يكملان
 Extensions → Search "Claude Code" → Install
 ```
 
-ثم سجّل الدخول بحساب Anthropic أو API key.
+ثم sign in بحساب Anthropic أو API key.
 
-#### 2. Claude Code CLI (وكيل Terminal)
+#### 2. Claude Code CLI (Terminal Agent)
 
 ثبّته عالمياً عبر npm:
 ```bash
@@ -100,35 +100,35 @@ claude
 
 **الأنسب لـ:**
 - المهام المعقدة متعددة الخطوات التي تمتد عبر ملفات كثيرة
-- سير العمل الوكيلي — دع Claude يقرأ، يحرر، يُشغّل، ويتكرر باستقلالية
-- التشغيل في CI أو pipelines آلية
-- المهام حيث تصف الهدف وتدع الوكيل يعمل عليه
+- Agentic workflows — دع Claude يقرأ، يحرر، يُشغّل، ويتكرر باستقلالية
+- التشغيل في CI أو automated pipelines
+- المهام حيث تصف الهدف وتدع الـ agent يعمل عليه
 
 **مثال على جلسة:**
 ```bash
-claude "أعد هيكلة OrderController لاستخدام Form Requests وكلاس action.
-       اتبع الاتفاقيات في CLAUDE.md. شغّل Pint بعد الانتهاء."
+claude "Refactor the OrderController to use Form Requests and an action class.
+       Follow the conventions in CLAUDE.md. Run Pint after."
 ```
 
-### CLI مقابل الإضافة — مقارنة سريعة
+### CLI vs Extension — مقارنة سريعة
 
-| | **إضافة VS Code** | **CLI (Terminal)** |
-|--|-------------------|-------------------|
-| الواجهة | الشريط الجانبي للـ IDE | Terminal |
-| الأنسب لـ | تعديلات محددة، أسئلة، مراجعة مباشرة | مهام مستقلة طويلة، إعادة هيكلة متعددة الملفات |
+| | **VS Code Extension** | **CLI (Terminal)** |
+|--|----------------------|--------------------|
+| Interface | IDE sidebar | Terminal |
+| الأنسب لـ | Targeted edits، أسئلة، inline review | Long autonomous tasks، multi-file refactors |
 | السياق | الملف الحالي + الملفات المفتوحة | المشروع بأكمله (تتحكم في النطاق) |
-| التحكم | عالٍ — ترى كل تغيير | متغير — الوكيل يعمل باستقلالية |
-| توافق المرحلة | المرحلة الثانية (بإشراف) | المرحلة الثالثة (وكيلي) |
+| التحكم | عالٍ — ترى كل تغيير | متغير — الـ agent يعمل باستقلالية |
+| توافق المرحلة | Phase 2 (supervised) | Phase 3 (agentic) |
 
-> ابدأ الفريق على **الإضافة** في المرحلة الثانية. قدّم **وكيل CLI** في المرحلة الثالثة مع تزايد الثقة.
+> ابدأ الفريق على **الـ extension** في Phase 2. قدّم **CLI agent** في Phase 3 مع تزايد الثقة.
 
 ---
 
-## اختيار النموذج
+## Model Selection
 
 ### النموذج: Claude Opus 4.6
 
-استخدم **Claude Opus 4.6** (`claude-opus-4-6`) كنموذج افتراضي للفريق. إنه الأكثر قدرة للمهام الوكيلية المعقدة متعددة الملفات.
+استخدم **Claude Opus 4.6** (`claude-opus-4-6`) كـ default model للفريق. إنه الأكثر قدرة للمهام الـ agentic المعقدة متعددة الملفات.
 
 اضبطه في Claude Code:
 ```bash
@@ -137,54 +137,54 @@ claude config set model claude-opus-4-6
 
 ### لماذا Opus 4.6 على البدائل؟
 
-| النموذج | المزوّد | جودة الكود | السياق | وكيلي | الأنسب لـ |
-|---------|--------|-----------|--------|--------|-----------|
-| **Claude Opus 4.6** | Anthropic | ⭐⭐⭐⭐⭐ | 200K | ✅ كامل | مهام معقدة، متعدد الملفات، قرارات معمارية |
-| Claude Sonnet 4.6 | Anthropic | ⭐⭐⭐⭐ | 200K | ✅ كامل | المهام اليومية، رد أسرع، تكلفة أقل |
-| GPT-4o | OpenAI | ⭐⭐⭐⭐ | 128K | ⚠️ جزئي | عام، منظومة واسعة |
-| GPT-o3 | OpenAI | ⭐⭐⭐⭐⭐ | 128K | ⚠️ جزئي | تفكير عميق، أبطأ |
-| Gemini 2.0 Pro | Google | ⭐⭐⭐⭐ | 1M | ⚠️ جزئي | سياق كبير، تكامل مع Google |
-| Gemini 2.5 Flash | Google | ⭐⭐⭐ | 1M | ⚠️ جزئي | سريع، رخيص، مناسب للمهام البسيطة |
-| DeepSeek R2 | DeepSeek | ⭐⭐⭐⭐ | 128K | ❌ محدود | فعّال التكلفة، قوي في المنطق |
+| Model | Provider | جودة الكود | Context | Agentic | الأنسب لـ |
+|-------|----------|-----------|--------|---------|-----------|
+| **Claude Opus 4.6** | Anthropic | ⭐⭐⭐⭐⭐ | 200K | ✅ Full | مهام معقدة، متعدد الملفات، قرارات معمارية |
+| Claude Sonnet 4.6 | Anthropic | ⭐⭐⭐⭐ | 200K | ✅ Full | المهام اليومية، رد أسرع، تكلفة أقل |
+| GPT-4o | OpenAI | ⭐⭐⭐⭐ | 128K | ⚠️ Partial | General purpose، منظومة واسعة |
+| GPT-o3 | OpenAI | ⭐⭐⭐⭐⭐ | 128K | ⚠️ Partial | Deep reasoning، أبطأ |
+| Gemini 2.0 Pro | Google | ⭐⭐⭐⭐ | 1M | ⚠️ Partial | Large context، تكامل مع Google |
+| Gemini 2.5 Flash | Google | ⭐⭐⭐ | 1M | ⚠️ Partial | سريع، رخيص، مناسب للمهام البسيطة |
+| DeepSeek R2 | DeepSeek | ⭐⭐⭐⭐ | 128K | ❌ Limited | فعّال التكلفة، قوي في المنطق |
 
-**لماذا Claude Opus 4.6 يفوز في تطوير Laravel الوكيلي:**
+**لماذا Claude Opus 4.6 يفوز في Laravel agentic development:**
 
-- **الأفضل في اتباع التعليمات المعقدة** — إعادة الهيكلة متعددة الخطوات، قرارات المعمارية، المهام الطويلة تبقى على المسار
-- **سياق 200K token** — يستطيع الاحتفاظ بملفات ميزة كاملة في جلسة واحدة
-- **استخدام أدوات وكيلية كاملة** — يقرأ الملفات، ينفذ أوامر، يكتب اختبارات، يتكرر بدون توجيه مستمر
+- **الأفضل في اتباع التعليمات المعقدة** — multi-step refactors، قرارات المعمارية، المهام الطويلة تبقى على المسار
+- **200K token context** — يستطيع الاحتفاظ بملفات feature كاملة في جلسة واحدة
+- **Full agentic tool use** — يقرأ الملفات، ينفذ أوامر، يكتب tests، يتكرر بدون prompting مستمر
 - **يحترم معاييرك** — بوجود `CLAUDE.md` باتفاقيات فريقك، يتبعها باستمرار
-- **تفكير بالسلامة أولاً** — أقل احتمالاً لتوليد تغييرات غير صحيحة
+- **Safety-first reasoning** — أقل احتمالاً لتوليد breaking changes خاطئة
 
 ### متى تستخدم Sonnet بدلاً من ذلك؟
 
 Sonnet 4.6 هو الخيار الصحيح لـ:
 - الأسئلة السريعة والمهام القصيرة
-- شرح كتلة من الكود
-- توليد migration واحد أو CRUD بسيط
+- شرح block من الكود
+- توليد migration واحد أو simple CRUD
 - المواقف التي تهم فيها سرعة الرد
 
 > **قاعدة بسيطة:** استخدم Opus عندما تكون المهمة متعددة الخطوات أو تمس ملفات متعددة. استخدم Sonnet عند سؤال واحد محدد أو تعديل صغير.
 
 ---
 
-## إضافات VS Code
+## VS Code Extensions
 
-تنطبق على كلٍّ من Anti-gravity و VS Code. أضف `.vscode/extensions.json` مشتركاً للمستودع حتى يقترحها الـ IDE تلقائياً على كل عضو في الفريق.
+تنطبق على كلٍّ من Anti-gravity و VS Code. أضف `.vscode/extensions.json` مشتركاً للـ repository حتى يقترحها الـ IDE تلقائياً على كل عضو في الفريق.
 
-### الإضافات المطلوبة
+### Required Extensions
 
-| الإضافة | المعرّف | الغرض |
-|---------|--------|--------|
-| PHP Intelephense | `bmewburn.vscode-intelephense-client` | ذكاء كودي، الانتقال إلى التعريف، الإكمال التلقائي |
-| Laravel Pint | `open-in-browser.laravel-pint` | تنسيق PHP تلقائي عند الحفظ |
-| PHPStan | `swordev.phpstan` | أخطاء التحليل الثابت مباشرة |
+| Extension | ID | الغرض |
+|-----------|-----|--------|
+| PHP Intelephense | `bmewburn.vscode-intelephense-client` | Code intelligence، go-to-definition، autocomplete |
+| Laravel Pint | `open-in-browser.laravel-pint` | Auto-format PHP عند الحفظ |
+| PHPStan | `swordev.phpstan` | Static analysis errors مباشرة |
 | EditorConfig | `editorconfig.editorconfig` | تطبيق قواعد `.editorconfig` تلقائياً |
 | Laravel Artisan | `ryannaddy.laravel-artisan` | تشغيل أوامر artisan من الـ IDE |
-| DotENV | `mikestead.dotenv` | تمييز صيغة ملفات `.env` |
+| DotENV | `mikestead.dotenv` | Syntax highlighting لملفات `.env` |
 
 ### `.vscode/extensions.json`
 
-أودِع هذا الملف حتى يقترح الـ IDE الإضافات عند فتح المشروع:
+أودِع هذا الملف حتى يقترح الـ IDE الـ extensions عند فتح المشروع:
 
 ```json
 {
@@ -201,7 +201,7 @@ Sonnet 4.6 هو الخيار الصحيح لـ:
 
 ### `.vscode/settings.json`
 
-تنسيق عند الحفظ مع Pint، PHPStan مفعّل مباشرة:
+Format on save مع Pint، PHPStan مفعّل inline:
 
 ```json
 {
@@ -218,15 +218,15 @@ Sonnet 4.6 هو الخيار الصحيح لـ:
 }
 ```
 
-*أودِع `.vscode/settings.json` — إعداد IDE المشترك جزء من المشروع، وليس تفضيلاً شخصياً.*
+*أودِع `.vscode/settings.json` — shared IDE config جزء من المشروع، وليس تفضيلاً شخصياً.*
 
 ---
 
-## أدوات جودة الكود
+## Code Quality Tools
 
 ### PHPStan + Larastan
 
-[PHPStan](https://phpstan.org) يكتشف الأخطاء قبل التشغيل. [Larastan](https://github.com/larastan/larastan) يوسّعه بقواعد خاصة بـ Laravel (Eloquent، العلاقات، facades).
+[PHPStan](https://phpstan.org) يكتشف الأخطاء قبل التشغيل. [Larastan](https://github.com/larastan/larastan) يوسّعه بقواعد خاصة بـ Laravel (Eloquent، relationships، facades).
 
 **التثبيت:**
 ```bash
@@ -250,7 +250,7 @@ parameters:
         - app/Http/Middleware/RedirectIfAuthenticated.php
 ```
 
-*ابدأ من المستوى 5. ارفع إلى 8+ عندما يصبح الكود نظيفاً.*
+*ابدأ من level 5. ارفع إلى 8+ عندما يصبح الـ codebase نظيفاً.*
 
 **التشغيل اليدوي:**
 ```bash
@@ -274,33 +274,33 @@ parameters:
 
 set -e
 
-# الحصول على ملفات PHP المرحلية فقط
+# الحصول على staged PHP files فقط
 STAGED_PHP=$(git diff --cached --name-only --diff-filter=ACM | grep "\.php$" || true)
 
 if [ -z "$STAGED_PHP" ]; then
     exit 0
 fi
 
-echo "→ فحص أسلوب الكود (Pint)..."
+echo "→ Checking code style (Pint)..."
 ./vendor/bin/pint --test $STAGED_PHP
 if [ $? -ne 0 ]; then
     echo ""
-    echo "❌ مشاكل في أسلوب الكود. شغّل: ./vendor/bin/pint"
+    echo "❌ Code style issues found. Run: ./vendor/bin/pint"
     exit 1
 fi
 
-echo "→ تشغيل التحليل الثابت (PHPStan)..."
+echo "→ Running static analysis (PHPStan)..."
 ./vendor/bin/phpstan analyse $STAGED_PHP --memory-limit=256M
 if [ $? -ne 0 ]; then
     echo ""
-    echo "❌ أخطاء PHPStan. أصلحها قبل الـ commit."
+    echo "❌ PHPStan errors found. Fix them before committing."
     exit 1
 fi
 
-echo "✅ جميع الفحوصات نجحت."
+echo "✅ All checks passed."
 ```
 
-*اجعله قابلاً للتنفيذ مرة واحدة، ثم أودِعه:*
+*اجعله executable مرة واحدة، ثم أودِعه:*
 ```bash
 chmod +x .githooks/pre-commit
 git add .githooks/pre-commit
@@ -308,7 +308,7 @@ git add .githooks/pre-commit
 
 ---
 
-## التكامل مع Composer
+## Composer Integration
 
 ثبّت git hook تلقائياً عند تشغيل أي شخص `composer install` أو `composer update`. لا إعداد يدوي مطلوب لكل مطور.
 
@@ -326,7 +326,7 @@ git add .githooks/pre-commit
 }
 ```
 
-الآن كل مطور يستنسخ المستودع ويشغّل `composer install` يحصل على الـ hook مثبتاً تلقائياً.
+الآن كل مطور يستنسخ الـ repository ويشغّل `composer install` يحصل على الـ hook مثبتاً تلقائياً.
 
 **تحقق من التثبيت:**
 ```bash
@@ -336,15 +336,15 @@ cat .git/hooks/pre-commit
 
 ---
 
-## قائمة التحقق — اكتمل عند
+## Checklist — Done When
 
 - [ ] Anti-gravity مثبت على جميع أجهزة المطورين
 - [ ] Claude Code مثبت (`npm install -g @anthropic-ai/claude-code`)
-- [ ] `.vscode/extensions.json` مُودَع — الفريق يُطلب منه تثبيت الإضافات
-- [ ] `.vscode/settings.json` مُودَع — التنسيق عند الحفظ نشط لـ PHP
+- [ ] `.vscode/extensions.json` مُودَع — الفريق يُطلب منه تثبيت الـ extensions
+- [ ] `.vscode/settings.json` مُودَع — format on save نشط لـ PHP
 - [ ] PHPStan + Larastan مثبتان، `phpstan.neon` مُودَع
 - [ ] `.githooks/pre-commit` مُودَع وقابل للتنفيذ
-- [ ] إضافة scripts `post-install-cmd` / `post-update-cmd` إلى composer
+- [ ] Composer `post-install-cmd` / `post-update-cmd` scripts مضافة
 - [ ] كل مطور شغّل `composer install` — الـ hook نشط على جهازه
 - [ ] اختبر أن الـ commit يُرفض عند فشل Pint أو PHPStan
-- [ ] مستوى PHPStan محدد ومتفق عليه من الفريق
+- [ ] PHPStan level محدد ومتفق عليه من الفريق

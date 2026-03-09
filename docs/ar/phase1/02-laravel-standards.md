@@ -1,57 +1,57 @@
-# 1.2 معايير Laravel
+# 1.2 Laravel Standards
 
-> فريق بدون معايير برمجية هو فريق يبدو فيه كل ملف كأنه كتبه شخص مختلف. الذكاء الاصطناعي يجعل هذا أسوأ — سيعكس أي تناقض يراه. اتفق على القواعد أولاً، ثم طبّقها تلقائياً.
+> فريق بدون coding standards هو فريق يبدو فيه كل ملف كأنه كتبه شخص مختلف. الذكاء الاصطناعي يجعل هذا أسوأ — سيعكس أي تناقض يراه. اتفق على القواعد أولاً، ثم طبّقها تلقائياً.
 
 ---
 
 ## الأهداف
 
-- تأسيس أسلوب كود واحد ومتسق عبر كامل المشروع
+- تأسيس coding style واحد ومتسق عبر كامل الـ codebase
 - أتمتة التطبيق حتى لا تعتمد المعايير على الانضباط الشخصي
 - منح أدوات الذكاء الاصطناعي نمطاً متسقاً تتعلم منه وتولّد بناءً عليه
-- تقليل العبء الذهني أثناء مراجعات الكود — الأسلوب ليس موضع جدل
+- تقليل العبء الذهني أثناء code reviews — الـ style ليس موضع جدل
 
 ---
 
-## PSR-12 وأسلوب الكتابة
+## PSR-12 & Coding Style
 
 PSR-12 هو معيار مجتمع PHP لتنسيق الكود. Laravel يتبعه افتراضياً.
 
 **القواعد الأساسية:**
-- 4 مسافات للمسافة البادئة (بدون tabs)
-- الأقواس الفتحية `{` على نفس سطر التعريف
-- سطر فارغ واحد بين الدوال
+- 4 spaces للمسافة البادئة (بدون tabs)
+- الأقواس الفتحية `{` على نفس سطر الـ declaration
+- سطر فارغ واحد بين الـ methods
 - `declare(strict_types=1);` في بداية كل ملف PHP
-- تلميحات الأنواع على جميع معاملات الدوال وأنواع الإرجاع
+- Type hints على جميع معاملات الـ methods وأنواع الـ return
 
 **لماذا يهم ذلك للذكاء الاصطناعي:**
-> عندما يكون كودك متسقاً، ينتج الذكاء الاصطناعي كوداً متسقاً. عندما لا يكون كذلك، يخمّن — ويخطئ في نصف الأحيان.
+> عندما يكون الـ codebase متسقاً، ينتج الذكاء الاصطناعي كوداً متسقاً. عندما لا يكون كذلك، يخمّن — ويخطئ في نصف الأحيان.
 
 ---
 
-## اتفاقيات تسمية Laravel
+## Laravel Naming Conventions
 
-هذه اتفاقيات Laravel غير القابلة للتفاوض. الانحراف عنها يكسر ميزات الإطار ويربك المطورين والذكاء الاصطناعي على حد سواء.
+هذه اتفاقيات Laravel غير القابلة للتفاوض. الانحراف عنها يكسر features في الـ framework ويربك المطورين والذكاء الاصطناعي على حد سواء.
 
 | ما هو | الاتفاقية | مثال |
 |-------|-----------|------|
-| النماذج (Models) | مفرد، PascalCase | `User`، `OrderItem` |
-| الكونترولرز | مفرد + `Controller` | `UserController`، `OrderController` |
-| ملفات Migration | snake_case، وصفية | `create_users_table`، `add_status_to_orders_table` |
-| المسارات | جمع، kebab-case | `/users`، `/order-items` |
-| أسماء المسارات | نقطة فاصلة | `users.index`، `users.store` |
-| واجهات Blade | snake_case | `user_profile.blade.php` |
-| مفاتيح الإعداد | snake_case | `app.timezone`، `mail.default` |
-| جداول قاعدة البيانات | جمع، snake_case | `users`، `order_items` |
-| أعمدة قاعدة البيانات | snake_case | `first_name`، `created_at` |
-| الدوال (Methods) | camelCase | `getUserOrders()`، `sendWelcomeEmail()` |
-| المتغيرات | camelCase | `$userOrders`، `$totalAmount` |
+| Models | Singular, PascalCase | `User`، `OrderItem` |
+| Controllers | Singular + `Controller` | `UserController`، `OrderController` |
+| Migrations | snake_case، وصفية | `create_users_table`، `add_status_to_orders_table` |
+| Routes | Plural, kebab-case | `/users`، `/order-items` |
+| Route names | Dot notation | `users.index`، `users.store` |
+| Blade views | snake_case | `user_profile.blade.php` |
+| Config keys | snake_case | `app.timezone`، `mail.default` |
+| Database tables | Plural, snake_case | `users`، `order_items` |
+| Database columns | snake_case | `first_name`، `created_at` |
+| Methods | camelCase | `getUserOrders()`، `sendWelcomeEmail()` |
+| Variables | camelCase | `$userOrders`، `$totalAmount` |
 
 ---
 
-## إعداد Laravel Pint
+## Laravel Pint Setup
 
-[Laravel Pint](https://laravel.com/docs/pint) هو أداة التنسيق الرسمية في Laravel. تطبّق PSR-12 تلقائياً — بلا جدال، بلا إصلاح يدوي.
+[Laravel Pint](https://laravel.com/docs/pint) هو الـ code formatter الرسمي في Laravel. يطبّق PSR-12 تلقائياً — بلا جدال، بلا إصلاح يدوي.
 
 **التثبيت:**
 ```bash
@@ -80,26 +80,26 @@ composer require laravel/pint --dev
 }
 ```
 
-**التطبيق عند كل commit** عبر pre-commit hook — انظر [1.3 اختيار الأدوات ← Pre-commit Hooks](03-tooling-selection.md#pre-commit-hooks) للإعداد الكامل بما في ذلك PHPStan والتثبيت التلقائي عبر composer.
+**التطبيق عند كل commit** عبر pre-commit hook — انظر [1.3 Tooling Selection → Pre-commit Hooks](03-tooling-selection.md#pre-commit-hooks) للإعداد الكامل بما في ذلك PHPStan والتثبيت التلقائي عبر composer.
 
 ---
 
-## اتفاقيات الفريق
+## Team Conventions
 
 بعيداً عن التنسيق، اتفق على هذه الاتفاقيات الهيكلية كفريق:
 
-### الكونترولرز — أبقِها نحيلة
-الكونترولر يستقبل الطلب، يفوّض إلى خدمة أو action، ويُعيد الرد. هذا كل شيء.
+### Controllers — Keep Them Thin
+الـ controller يستقبل الـ request، يفوّض إلى service أو action، ويُعيد الـ response. هذا كل شيء.
 
 ```php
-// ✅ كونترولر نحيل
+// ✅ Thin controller
 public function store(StoreOrderRequest $request, CreateOrder $action): JsonResponse
 {
     $order = $action->execute($request->validated());
     return response()->json($order, 201);
 }
 
-// ❌ كونترولر سمين — المنطق يجب أن يكون في مكان آخر
+// ❌ Fat controller — المنطق يجب أن يكون في مكان آخر
 public function store(Request $request): JsonResponse
 {
     $validated = $request->validate([...]);
@@ -109,25 +109,25 @@ public function store(Request $request): JsonResponse
 }
 ```
 
-### التحقق — استخدم Form Requests دائماً
-لا تُحقق أبداً بشكل مضمّن داخل الكونترولر. أنشئ كلاس Form Request مخصصاً.
+### Validation — استخدم Form Requests دائماً
+لا تُحقق أبداً inline داخل الـ controller. أنشئ dedicated Form Request class.
 
 ```bash
 php artisan make:request StoreOrderRequest
 ```
 
-### منطق الأعمال — Services أو Actions
-ضع منطق المجال في `app/Services/` أو `app/Actions/` — أبداً في الكونترولرز أو النماذج.
+### Business Logic — Services أو Actions
+ضع domain logic في `app/Services/` أو `app/Actions/` — أبداً في الـ controllers أو الـ models.
 
-### تجنب منطق الاستعلام في الكونترولرز
-استخدم Eloquent scopes أو repositories. لا استعلامات `DB::select()` خام في الكونترولرز.
+### لا Query Logic في الـ Controllers
+استخدم Eloquent scopes أو repositories. لا `DB::select()` raw queries في الـ controllers.
 
-### لا أرقام سحرية أو نصوص مُشفّرة
-استخدم الثوابت أو قيم الإعداد أو enums. `OrderStatus::PENDING` أفضل من `'pending'`.
+### لا Magic Numbers أو Hardcoded Strings
+استخدم constants أو config values أو enums. `OrderStatus::PENDING` أفضل من `'pending'`.
 
 ---
 
-## EditorConfig وإعدادات IDE
+## EditorConfig & IDE Settings
 
 أضف ملف `.editorconfig` إلى مجلد المشروع لتطبيق تنسيق متسق عبر جميع المحررات:
 
@@ -146,7 +146,7 @@ trim_trailing_whitespace = true
 trim_trailing_whitespace = false
 ```
 
-**لـ VS Code** — أضف `.vscode/settings.json` مشتركاً إلى المستودع:
+**لـ VS Code** — أضف `.vscode/settings.json` مشتركاً إلى الـ repository:
 ```json
 {
     "editor.formatOnSave": true,
@@ -156,14 +156,14 @@ trim_trailing_whitespace = false
 }
 ```
 
-**لـ PhpStorm** — شارك إعداد أسلوب الكود عبر `.idea/codeStyles/` المُودَع في git.
+**لـ PhpStorm** — شارك الـ code style config عبر `.idea/codeStyles/` مُودَع في git.
 
 ---
 
-## قائمة التحقق — اكتمل عند
+## Checklist — Done When
 
-- [ ] `pint.json` مُودَع في المستودع
-- [ ] `.editorconfig` مُودَع في المستودع
-- [ ] وثيقة اتفاقيات التسمية مشاركة مع الفريق
-- [ ] الكود الموجود منسَّق بـ Pint (commit تنظيف واحد)
+- [ ] `pint.json` مُودَع في الـ repository
+- [ ] `.editorconfig` مُودَع في الـ repository
+- [ ] Naming conventions doc مشاركة مع الفريق
+- [ ] الـ codebase الموجود منسَّق بـ Pint (one-time cleanup commit)
 - [ ] أول PR مراجع وفق هذه المعايير

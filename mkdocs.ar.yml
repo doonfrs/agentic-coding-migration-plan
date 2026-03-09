@@ -7,9 +7,9 @@ theme:
   language: ar
   direction: rtl
   palette:
-    scheme: slate
-    primary: deep purple
-    accent: purple
+    scheme: default
+    primary: indigo
+    accent: indigo
   font:
     text: Almarai
   features:
