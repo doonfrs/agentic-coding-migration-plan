@@ -1,0 +1,38 @@
+site_name: خطة الانتقال إلى البرمجة الوكيلية
+docs_dir: docs/ar
+site_dir: site/ar
+
+theme:
+  name: material
+  language: ar
+  direction: rtl
+  palette:
+    scheme: slate
+    primary: deep purple
+    accent: purple
+  font:
+    text: Almarai
+  features:
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+    - content.code.copy
+
+nav:
+  - نظرة عامة: index.md
+  - المرحلة الأولى — الاستقرار والتوحيد:
+    - 1.1 مراجعة الكود والمعمارية: phase1/01-codebase-architecture.md
+    - 1.2 معايير Laravel: phase1/02-laravel-standards.md
+    - 1.3 اختيار الأدوات: phase1/03-tooling-selection.md
+    - 1.4 سير عمل Git: phase1/04-git-workflow.md
+    - 1.5 النشر: phase1/05-deployment.md
+  - المرحلة الثانية — شبكات الأمان والذكاء الاصطناعي المُشرف:
+    - 2.1 الاختبارات: phase2/01-testing.md
+    - 2.2 مسار CI: phase2/02-ci-pipeline.md
+    - 2.3 البيئة: phase2/03-environment.md
+    - 2.4 تقديم الذكاء الاصطناعي بإشراف: phase2/04-supervised-ai.md
+  - المرحلة الثالثة — نحو العمل الوكيلي:
+    - 3.1 منهجية الوكيل: phase3/01-agentic-methodology.md
+    - 3.2 نضج CI/CD: phase3/02-cicd-maturity.md
+    - 3.3 تمكين الفريق: phase3/03-team-enablement.md
+    - 3.4 الحوكمة: phase3/04-governance.md

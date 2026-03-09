@@ -1,7 +1,10 @@
 site_name: Agentic Coding Migration Plan
+docs_dir: docs/en
+site_dir: site/en
 
 theme:
   name: material
+  language: en
   palette:
     scheme: slate
     primary: deep purple
