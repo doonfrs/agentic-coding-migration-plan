@@ -10,6 +10,7 @@
 
 > AI amplifies what's already there. If the codebase has no standards, the agent will confidently produce more of the same mess. Standards come first.
 
+
 - [1.1 Codebase & Architecture Review](./phase1/codebase-architecture.md)
 - [1.2 Laravel Standards](./phase1/laravel-standards.md)
 - [1.3 Tooling Selection](./phase1/tooling-selection.md)
@@ -64,3 +65,4 @@
 | AI-generated bugs reach production | Tests + CI gate introduced in Month 2 before expanding AI use |
 | Team adopts AI without oversight | Supervised phase before autonomous agent workflows |
 | No way to measure improvement | KPIs and baselines captured before the agentic phase begins |
+## test

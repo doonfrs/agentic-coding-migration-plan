@@ -1,5 +1,4 @@
 site_name: Agentic Coding Migration Plan
-docs_dir: presentation
 
 theme:
   name: material
