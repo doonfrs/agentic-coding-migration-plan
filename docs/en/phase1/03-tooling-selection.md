@@ -54,7 +54,7 @@ Cursor is a solid choice and widely adopted — but it positions itself as the A
 | Model | Claude Opus 4.6 — best in class for code | GPT-4o / Claude (their choice) |
 | Interface | Terminal + IDE agent | Embedded in Cursor only |
 | Agentic capability | Full agent — reads, edits, runs commands | Composer mode (limited) |
-| Context window | 200K tokens | Limited context |
+| Context window | Up to 1M tokens | Limited context |
 | Portability | Works in any terminal, any repo | Cursor-only |
 | Cost | Per token (pay for what you use) | Monthly subscription |
 | Team control | Full — you choose the model and prompts | Locked to Cursor's implementation |
@@ -122,6 +122,8 @@ claude "Refactor the OrderController to use Form Requests and an action class.
 
 > Start the team on the **extension** in Phase 2. Introduce the **CLI agent** in Phase 3 as confidence grows.
 
+> For a comprehensive deep dive into all Claude Code features — Planning Mode, Edit Mode, Skills, Slash Commands, CLAUDE.md, MCP, Hooks, and more — see [1.5 Claude Code Deep Dive](05-claude-code.md).
+
 ---
 
 ## Model Selection
@@ -139,7 +141,7 @@ claude config set model claude-opus-4-6
 
 | Model | Provider | Code Quality | Context | Agentic | Best For |
 |-------|----------|-------------|---------|---------|----------|
-| **Claude Opus 4.6** | Anthropic | ⭐⭐⭐⭐⭐ | 200K | ✅ Full | Complex tasks, multi-file, architecture decisions |
+| **Claude Opus 4.6** | Anthropic | ⭐⭐⭐⭐⭐ | 1M | ✅ Full | Complex tasks, multi-file, architecture decisions |
 | Claude Sonnet 4.6 | Anthropic | ⭐⭐⭐⭐ | 200K | ✅ Full | Everyday tasks, faster response, lower cost |
 | GPT-4o | OpenAI | ⭐⭐⭐⭐ | 128K | ⚠️ Partial | General purpose, broad ecosystem |
 | GPT-o3 | OpenAI | ⭐⭐⭐⭐⭐ | 128K | ⚠️ Partial | Deep reasoning, slower |
@@ -150,7 +152,7 @@ claude config set model claude-opus-4-6
 **Why Claude Opus 4.6 wins for agentic Laravel development:**
 
 - **Best at following complex instructions** — multi-step refactors, architecture decisions, long tasks stay on track
-- **200K context** — can hold an entire feature's worth of files in one session
+- **1M token context** — can hold an entire feature's worth of files in one session
 - **Full agentic tool use** — reads files, runs commands, writes tests, iterates without constant prompting
 - **Respects your standards** — given a `CLAUDE.md` with your team conventions, it follows them consistently
 - **Safety-first reasoning** — less likely to hallucinate breaking changes

@@ -54,7 +54,7 @@ Cursor خيار متين ومعتمد على نطاق واسع — لكنه يض
 | Model | Claude Opus 4.6 — best in class للكود | GPT-4o / Claude (بحسب اختيارهم) |
 | Interface | Terminal + IDE agent | مدمج في Cursor فقط |
 | Agentic capability | Full agent — يقرأ، يحرر، ينفذ أوامر | Composer mode (محدود) |
-| Context window | 200K tokens | context محدود |
+| Context window | حتى 1M tokens | context محدود |
 | Portability | يعمل في أي terminal، أي repository | Cursor فقط |
 | Cost | Per token (تدفع لما تستخدمه) | Monthly subscription |
 | Team control | كامل — تختار الـ model والـ prompts | مقيّد بتطبيق Cursor |
@@ -122,6 +122,8 @@ claude "Refactor the OrderController to use Form Requests and an action class.
 
 > ابدأ الفريق على **الـ extension** في Phase 2. قدّم **CLI agent** في Phase 3 مع تزايد الثقة.
 
+> للتعمق الشامل في جميع ميزات Claude Code — Planning Mode، Edit Mode، Skills، Slash Commands، CLAUDE.md، MCP، Hooks، والمزيد — انظر [1.5 Claude Code بالتفصيل](05-claude-code.md).
+
 ---
 
 ## Model Selection
@@ -139,7 +141,7 @@ claude config set model claude-opus-4-6
 
 | Model | Provider | جودة الكود | Context | Agentic | الأنسب لـ |
 |-------|----------|-----------|--------|---------|-----------|
-| **Claude Opus 4.6** | Anthropic | ⭐⭐⭐⭐⭐ | 200K | ✅ Full | مهام معقدة، متعدد الملفات، قرارات معمارية |
+| **Claude Opus 4.6** | Anthropic | ⭐⭐⭐⭐⭐ | 1M | ✅ Full | مهام معقدة، متعدد الملفات، قرارات معمارية |
 | Claude Sonnet 4.6 | Anthropic | ⭐⭐⭐⭐ | 200K | ✅ Full | المهام اليومية، رد أسرع، تكلفة أقل |
 | GPT-4o | OpenAI | ⭐⭐⭐⭐ | 128K | ⚠️ Partial | General purpose، منظومة واسعة |
 | GPT-o3 | OpenAI | ⭐⭐⭐⭐⭐ | 128K | ⚠️ Partial | Deep reasoning، أبطأ |
@@ -150,7 +152,7 @@ claude config set model claude-opus-4-6
 **لماذا Claude Opus 4.6 يفوز في Laravel agentic development:**
 
 - **الأفضل في اتباع التعليمات المعقدة** — multi-step refactors، قرارات المعمارية، المهام الطويلة تبقى على المسار
-- **200K token context** — يستطيع الاحتفاظ بملفات feature كاملة في جلسة واحدة
+- **1M token context** — يستطيع الاحتفاظ بملفات feature كاملة في جلسة واحدة
 - **Full agentic tool use** — يقرأ الملفات، ينفذ أوامر، يكتب tests، يتكرر بدون prompting مستمر
 - **يحترم معاييرك** — بوجود `CLAUDE.md` باتفاقيات فريقك، يتبعها باستمرار
 - **Safety-first reasoning** — أقل احتمالاً لتوليد breaking changes خاطئة

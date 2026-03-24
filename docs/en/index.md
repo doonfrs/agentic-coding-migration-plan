@@ -15,7 +15,8 @@
 - [1.2 Laravel Standards](./phase1/02-laravel-standards.md)
 - [1.3 Tooling Selection](./phase1/03-tooling-selection.md)
 - [1.4 Git Workflow](./phase1/04-git-workflow.md)
-- [1.5 Deployment](./phase1/05-deployment.md)
+- [1.5 Claude Code Deep Dive](./phase1/05-claude-code.md)
+- [1.6 Deployment](./phase1/06-deployment.md)
 
 **Outcome:** Stable project + consistent codebase conventions + disciplined Git workflow — a clean foundation for AI
 

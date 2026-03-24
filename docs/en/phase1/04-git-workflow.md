@@ -256,6 +256,6 @@ When Claude Code operates in agentic mode (Phase 3), it can create branches and 
 - [ ] Conventional Commits convention adopted — team has reference card
 - [ ] PR template committed to `.github/pull_request_template.md`
 - [ ] Branch protection rules configured on `main`
-- [ ] CI checks wired to branch protection (see [1.5 Deployment](05-deployment.md))
+- [ ] CI checks wired to branch protection (see [1.6 Deployment](06-deployment.md))
 - [ ] At least one full cycle completed: branch → commit → PR → review → merge
 - [ ] Team agrees on squash merge as the default strategy

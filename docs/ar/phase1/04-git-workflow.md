@@ -256,6 +256,6 @@ Branch name pattern: `main`
 - [ ] Conventional Commits convention مُعتمد — الفريق لديه بطاقة مرجعية
 - [ ] قالب الـ PR مُودَع في `.github/pull_request_template.md`
 - [ ] قواعد حماية الـ branch مضبوطة على `main`
-- [ ] فحوصات الـ CI مرتبطة بحماية الـ branch (انظر [1.5 Deployment](05-deployment.md))
+- [ ] فحوصات الـ CI مرتبطة بحماية الـ branch (انظر [1.6 النشر](06-deployment.md))
 - [ ] دورة كاملة واحدة على الأقل مكتملة: branch → commit → PR → review → merge
 - [ ] الفريق متفق على squash merge كاستراتيجية افتراضية

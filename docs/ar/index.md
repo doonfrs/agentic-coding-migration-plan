@@ -14,7 +14,8 @@
 - [1.2 Laravel Standards](./phase1/02-laravel-standards.md)
 - [1.3 Tooling Selection](./phase1/03-tooling-selection.md)
 - [1.4 Git Workflow](./phase1/04-git-workflow.md)
-- [1.5 Deployment](./phase1/05-deployment.md)
+- [1.5 Claude Code بالتفصيل](./phase1/05-claude-code.md)
+- [1.6 النشر](./phase1/06-deployment.md)
 
 **النتيجة المتوقعة:** مشروع مستقر + codebase conventions متسقة + Git workflow منضبط — أساس نظيف للذكاء الاصطناعي
 
