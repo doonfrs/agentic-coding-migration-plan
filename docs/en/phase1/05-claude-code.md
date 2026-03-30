@@ -77,6 +77,8 @@ Slash commands are typed directly in the Claude Code prompt. They control modes,
 | `/clear` | Clear the entire conversation and start fresh |
 | `/status` | Show current session info — model, mode, token usage |
 | `/cost` | Show token usage and cost for the current session |
+| `/btw` | Ask a side question without adding it to the main conversation context |
+| `/export` | Export the current conversation as plain text |
 
 ### Model & Configuration
 
@@ -84,6 +86,8 @@ Slash commands are typed directly in the Claude Code prompt. They control modes,
 |---------|-------------|
 | `/model` | Switch the active model mid-session (e.g., `/model sonnet`, `/model opus`) |
 | `/config` | Open or modify Claude Code configuration |
+| `/init` | Initialize a project with a CLAUDE.md file and basic configuration |
+| `/skills` | List all available skills (custom slash commands) |
 
 ### Modes
 
@@ -99,6 +103,7 @@ Slash commands are typed directly in the Claude Code prompt. They control modes,
 | `/commit` | Stage changes, generate a commit message, and create a git commit |
 | `/review` | Review code changes or a pull request with detailed feedback |
 | `/pr-comments` | View and address PR review comments |
+| `/security-review` | Analyze pending changes for security vulnerabilities before committing |
 
 ### File & Context
 
@@ -124,6 +129,89 @@ Slash commands are typed directly in the Claude Code prompt. They control modes,
 | `/bug` | Report a bug to the Claude Code team |
 
 > You can also type `/` in the prompt and Claude Code will show autocomplete suggestions for available commands.
+
+---
+
+## `@` File Mentions
+
+### What It Is
+
+Type `@` followed by a file path to explicitly reference a file in your prompt. Claude will read the file and include it in its context, ensuring it has the full picture before responding.
+
+### How It Works
+
+```
+@app/Models/User.php what relationships does this model have?
+```
+
+Claude reads the file immediately and answers based on its actual contents — no guessing.
+
+### Practical Examples
+
+```
+@app/Http/Controllers/OrderController.php refactor this to use Action classes
+
+@database/migrations/2024_01_create_orders_table.php add a status column
+
+@routes/api.php @app/Http/Controllers/Api/ show me all API endpoints and their controllers
+```
+
+### Tips
+
+- You can `@`-mention multiple files in the same prompt
+- Works with directories too — `@app/Models/` adds all files in that directory
+- Great for ensuring Claude sees the exact file you're talking about, not a similarly named one
+- File autocomplete appears as you type after `@`
+
+---
+
+## Skills — Custom Slash Commands
+
+### What They Are
+
+Skills are custom slash commands you create as markdown files. They let you define reusable workflows that any team member can trigger with a simple `/command`.
+
+### Where They Live
+
+| Location | Scope |
+|----------|-------|
+| `.claude/skills/` | Project skills — shared with the team via git |
+| `~/.claude/skills/` | Personal skills — available in all your projects |
+
+### Creating a Skill
+
+Create a markdown file with YAML frontmatter:
+
+```markdown
+<!-- .claude/skills/lint.md -->
+---
+name: lint
+description: Run Laravel Pint and fix all code style issues
+---
+
+Run `./vendor/bin/pint` to fix code style across the project.
+Then run `./vendor/bin/pint --test` to verify everything passes.
+Show me a summary of what changed.
+```
+
+Now any team member can type `/lint` and Claude will execute this workflow.
+
+### Practical Examples for Laravel Teams
+
+| Skill | What It Does |
+|-------|-------------|
+| `/lint` | Run Pint and fix code style |
+| `/test` | Run Pest with coverage |
+| `/migrate-fresh` | Fresh migration + seed + verify |
+| `/deploy-check` | Run all pre-deployment checks |
+
+### Listing Available Skills
+
+```
+/skills
+```
+
+Shows all skills available in the current session — built-in, project, and personal.
 
 ---
 
@@ -293,6 +381,72 @@ Claude reads **all applicable** CLAUDE.md files for the current context — root
 - **Commit** CLAUDE.md to the repository — it's shared team configuration
 - **Review** changes to CLAUDE.md in PRs — it shapes AI behavior for everyone
 - **Update** it as conventions evolve — it's a living document
+
+---
+
+## `/init` — Project Initialization
+
+### What It Is
+
+An interactive setup wizard that creates a `CLAUDE.md` and basic configuration for your project. Instead of writing `CLAUDE.md` from scratch, `/init` walks you through it.
+
+### When to Use It
+
+- Setting up Claude Code in a project for the first time
+- Onboarding a new team member who hasn't configured their local environment
+- After cloning a project that doesn't have a `CLAUDE.md` yet
+
+### How It Works
+
+```
+/init
+```
+
+Claude scans your project structure, detects the framework (e.g., Laravel), and generates a `CLAUDE.md` tailored to what it finds — including coding conventions, test commands, and architecture patterns.
+
+> You can also run `claude --init` from the terminal to initialize without starting a full session.
+
+---
+
+## `.claude/` Project Structure
+
+### What It Is
+
+The `.claude/` directory is the central configuration hub for Claude Code in your project. It holds shared settings, custom skills, subagent definitions, and more.
+
+### Directory Layout
+
+```
+.claude/
+├── settings.json          # Shared project settings (commit to git)
+├── settings.local.json    # Personal overrides (gitignored)
+├── agents/                # Custom subagent definitions
+│   └── reviewer.md
+├── skills/                # Custom slash commands
+│   └── lint.md
+├── rules/                 # Path-specific rules
+│   └── api-controllers.md
+└── hooks/                 # Hook scripts
+    └── post-edit-pint.sh
+```
+
+### What to Commit vs Gitignore
+
+| File / Directory | Commit? | Why |
+|-----------------|---------|-----|
+| `settings.json` | **Yes** | Shared team configuration |
+| `settings.local.json` | **No** | Personal preferences (auto-gitignored) |
+| `agents/` | **Yes** | Team-shared subagent definitions |
+| `skills/` | **Yes** | Team-shared custom commands |
+| `rules/` | **Yes** | Team-shared path-specific rules |
+| `hooks/` | **Yes** | Team-shared automation scripts |
+
+### Relationship with CLAUDE.md
+
+- `CLAUDE.md` lives at the **project root** — it's the main instructions file
+- `.claude/` lives at the **project root** — it's the configuration directory
+- Both are loaded automatically at the start of every session
+- `CLAUDE.md` is for prose instructions; `.claude/` is for structured configuration
 
 ---
 
@@ -550,6 +704,18 @@ The `/compact` command compresses conversation history:
 - Discards verbose tool outputs and intermediate steps
 - Use it when Claude starts repeating itself or losing track
 
+### /compact with Instructions — Guided Compression
+
+You can tell `/compact` **what to focus on** when compressing:
+
+```
+/compact focus on the auth refactor only
+/compact keep the database schema decisions, discard the debugging steps
+/compact retain the API endpoint list we agreed on
+```
+
+This is useful when your session covered multiple topics but you only need to continue working on one. Plain `/compact` keeps everything equally; guided `/compact` prioritizes what you tell it to.
+
 ### Best Practices
 
 | Practice | Why |
@@ -560,6 +726,92 @@ The `/compact` command compresses conversation history:
 | Break very large tasks into multiple sessions | Better than one overloaded session |
 | Keep CLAUDE.md concise | It's re-read at the start of every session |
 | Use `/clear` to start completely fresh | When the conversation has drifted too far |
+
+---
+
+## Session Management — Resume & Continue
+
+### What It Is
+
+Claude Code saves your conversation history locally. You can close a session and pick up exactly where you left off — even days later.
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `claude -c` | Resume the most recent conversation |
+| `claude -r <session-id>` | Resume a specific session by ID |
+| `claude -n "auth refactor"` | Name the current session for easy identification |
+
+### When It's Valuable
+
+- **Multi-day features** — close your laptop, come back tomorrow, `claude -c`
+- **Context preservation** — you spent 30 minutes building context, don't lose it
+- **Parallel work** — name sessions (`-n "auth"`, `-n "payments"`) and switch between them
+- **Interrupted work** — phone call, meeting, emergency — resume right where you stopped
+
+### Practical Workflow
+
+```bash
+# Start a named session for a feature
+claude -n "order-refactor"
+
+# ... work on the feature, then close ...
+
+# Next day: resume exactly where you left off
+claude -c
+
+# Or resume a specific named session
+claude -r order-refactor
+```
+
+---
+
+## Useful Prompt Commands
+
+### `/btw` — Side Questions
+
+Ask a quick question without polluting the main conversation context. The answer is shown but not added to Claude's working memory.
+
+```
+/btw what's the difference between belongsTo and hasOne in Laravel?
+```
+
+Use it when you need a quick answer mid-task without derailing Claude's focus on the current work.
+
+### `/export` — Export Conversation
+
+Save the entire conversation as a plain text file.
+
+```
+/export
+/export auth-refactor-session.txt
+```
+
+**Use cases:**
+
+- Share a session with a teammate for review
+- Document an architectural decision discussion
+- Archive a debugging session for future reference
+- Create training material from a Claude interaction
+
+### `/security-review` — Vulnerability Scan
+
+Analyze your pending changes for security vulnerabilities before committing.
+
+```
+/security-review
+```
+
+Claude reviews all staged and unstaged changes looking for:
+
+- SQL injection risks
+- XSS vulnerabilities
+- Exposed credentials or secrets
+- Insecure authentication patterns
+- OWASP Top 10 issues
+
+> **Team rule suggestion:** Run `/security-review` before every PR that touches authentication, authorization, or user input handling.
 
 ---
 
@@ -588,11 +840,14 @@ The `/compact` command compresses conversation history:
 - [ ] Every developer has used the VS Code Extension at least once
 - [ ] Team understands the difference between CLI and Extension use cases
 - [ ] Team knows the main slash commands: `/plan`, `/model`, `/compact`, `/commit`, `/clear`, `/help`
+- [ ] Team knows how to use `@` file mentions to reference specific files
 - [ ] `CLAUDE.md` created and committed to the project repository
 - [ ] `CLAUDE.md` reviewed and agreed on by the team
+- [ ] `.claude/` directory structure understood — what to commit vs gitignore
 - [ ] Permissions configured appropriately for the current phase
 - [ ] Team knows how to use Planning Mode for exploration before editing
 - [ ] Team knows how to switch models with `/model`
 - [ ] Team knows how to manage context with `/compact` and `/clear`
+- [ ] Team knows `/security-review` before committing sensitive changes
 - [ ] At least one multi-file refactor completed under supervision
 - [ ] Team is ready for Phase 2 supervised AI introduction
