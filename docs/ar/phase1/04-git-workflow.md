@@ -1,6 +1,6 @@
 # 1.4 سير عمل Git
 
-> workflow Git المكسور هو أول ما يكسر الـ agentic coding. إذا كانت الـ branches فوضوية والـ commits بلا معنى، فلا يملك الذكاء الاصطناعي تاريخاً موثوقاً ليستند إليه — ولا الفريق أيضاً.
+> workflow Git المكسور هو أول ما يكسر الـ agentic coding. إذا كانت الـ branches فوضوية والـ commits بلا معنى، فلا يملك الذكاء الاصطناعي تاريخاً موثوقاً ليستند إليه - ولا الفريق أيضاً.
 
 ---
 
@@ -40,7 +40,7 @@ main
 - دائماً بأحرف صغيرة، الكلمات مفصولة بـ hyphens
 - دائماً يبدأ بنوع الـ prefix (`feature/`، `fix/`، `chore/`، `hotfix/`)
 - أضف ticket ID عند وجوده
-- حافظ على قِصَر الوصف — أقل من 5 كلمات
+- حافظ على قِصَر الوصف - أقل من 5 كلمات
 - لا slashes باستثناء الفاصل في الـ prefix
 
 **صحيح:**
@@ -60,10 +60,10 @@ feature/added-some-stuff-for-the-payment-thing
 
 ### دورة حياة الـ Branch
 
-1. أنشئ من `main` — وليس من branch آخر
+1. أنشئ من `main` - وليس من branch آخر
 2. اعمل بـ commits صغيرة ومتكررة
 3. افتح PR عند الجاهزية للمراجعة
-4. ادمج عبر PR — لا تدمج مباشرة في `main`
+4. ادمج عبر PR - لا تدمج مباشرة في `main`
 5. احذف الـ branch بعد الدمج
 
 ---
@@ -72,7 +72,7 @@ feature/added-some-stuff-for-the-payment-thing
 
 ### الصيغة: Conventional Commits
 
-استخدم [Conventional Commits](https://www.conventionalcommits.org/) — معيار مُعتمد على نطاق واسع يجعل التاريخ قابلاً للقراءة ويُمكّن الـ automated changelogs.
+استخدم [Conventional Commits](https://www.conventionalcommits.org/) - معيار مُعتمد على نطاق واسع يجعل التاريخ قابلاً للقراءة ويُمكّن الـ automated changelogs.
 
 ```
 <type>(<scope>): <short description>
@@ -92,7 +92,7 @@ feature/added-some-stuff-for-the-payment-thing
 | `test` | إضافة أو تحديث tests |
 | `chore` | build process، تحديثات dependencies، تغييرات config |
 | `docs` | توثيق فقط |
-| `style` | تغييرات الـ code style (Pint formatting، مسافات — بدون تغيير في المنطق) |
+| `style` | تغييرات الـ code style (Pint formatting، مسافات - بدون تغيير في المنطق) |
 | `perf` | تحسين الأداء |
 | `revert` | التراجع عن commit سابق |
 
@@ -152,7 +152,7 @@ Closes PROJ-312
 - كل تغيير على `main` يجب أن يمر عبر PR
 - الحد الأدنى موافقة مراجع واحد قبل الدمج
 - يجب أن تنجح جميع الفحوصات الآلية (Pint، PHPStan، tests)
-- يجب أن تكون الـ PRs صغيرة ومركّزة — تغيير منطقي واحد لكل PR
+- يجب أن تكون الـ PRs صغيرة ومركّزة - تغيير منطقي واحد لكل PR
 - Draft PRs مشجّعة للحصول على feedback مبكر
 
 ### عنوان الـ PR
@@ -200,22 +200,22 @@ Closes #TICKET-ID
 
 **للمراجعين:**
 - راجع خلال يوم عمل واحد
-- ركّز على المنطق والمعمارية والصحة — ليس على الـ style (هذا دور Pint)
+- ركّز على المنطق والمعمارية والصحة - ليس على الـ style (هذا دور Pint)
 - وافق إذا كان الكود صحيحاً ويتبع الاتفاقيات، حتى لو كنت ستفعله بطريقة مختلفة
 - اترك تعليقات قابلة للتنفيذ: "فكّر في X لأن Y" وليس فقط "لا يعجبني هذا"
 
 **للمؤلفين:**
-- ردّ على جميع التعليقات — إما أصلح أو اشرح لماذا لا
+- ردّ على جميع التعليقات - إما أصلح أو اشرح لماذا لا
 - لا تدمج بدون موافقة
-- حافظ على PRs أقل من 400 سطر تغيير قدر الإمكان — الـ PRs الكبيرة تحصل على مراجعات ضعيفة
+- حافظ على PRs أقل من 400 سطر تغيير قدر الإمكان - الـ PRs الكبيرة تحصل على مراجعات ضعيفة
 
 ### الدمج
 
-استخدم **Squash and Merge** لـ feature branches — يحافظ على تاريخ `main` نظيفاً بـ commit واحد لكل feature.
+استخدم **Squash and Merge** لـ feature branches - يحافظ على تاريخ `main` نظيفاً بـ commit واحد لكل feature.
 
 استخدم **Merge Commit** فقط للـ hotfixes حيث تريد الحفاظ على تاريخ الـ commits الدقيق لـ post-mortem.
 
-لا تستخدم **Rebase and Merge** أبداً — يعيد كتابة التاريخ ويكسر `git bisect`.
+لا تستخدم **Rebase and Merge** أبداً - يعيد كتابة التاريخ ويكسر `git bisect`.
 
 ---
 
@@ -245,15 +245,15 @@ Branch name pattern: `main`
 
 ### لماذا هذا مهم للـ Agentic Coding
 
-عندما يعمل Claude Code في الـ agentic mode (Phase 3)، يمكنه إنشاء branches وفتح PRs. حماية الـ branch تضمن أنه حتى لو أخطأ الـ agent، لا يمكنه دمج عمله بدون مراجعة بشرية. فحوصات الـ CI تعمل كشبكة أمان — يجب على الـ agent إنتاج كود يجتاز الفحوصات، لا مجرد كود يبدو معقولاً.
+عندما يعمل Claude Code في الـ agentic mode (Phase 3)، يمكنه إنشاء branches وفتح PRs. حماية الـ branch تضمن أنه حتى لو أخطأ الـ agent، لا يمكنه دمج عمله بدون مراجعة بشرية. فحوصات الـ CI تعمل كشبكة أمان - يجب على الـ agent إنتاج كود يجتاز الفحوصات، لا مجرد كود يبدو معقولاً.
 
 ---
 
-## قائمة التحقق — اكتمل عند
+## قائمة التحقق - اكتمل عند
 
 - [ ] branching strategy موثّقة ومشاركة مع الفريق
 - [ ] جميع المطورين يفهمون اتفاقية تسمية الـ branch
-- [ ] Conventional Commits convention مُعتمد — الفريق لديه بطاقة مرجعية
+- [ ] Conventional Commits convention مُعتمد - الفريق لديه بطاقة مرجعية
 - [ ] قالب الـ PR مُودَع في `.github/pull_request_template.md`
 - [ ] قواعد حماية الـ branch مضبوطة على `main`
 - [ ] فحوصات الـ CI مرتبطة بحماية الـ branch (انظر [1.6 النشر](06-deployment.md))

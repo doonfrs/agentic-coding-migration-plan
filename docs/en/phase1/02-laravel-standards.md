@@ -1,6 +1,6 @@
 # 1.2 Laravel Standards
 
-> A team without coding standards is a team where every file looks like it was written by a different person. AI makes this worse — it will mirror whatever inconsistency it sees. Agree on the rules first, then enforce them automatically.
+> A team without coding standards is a team where every file looks like it was written by a different person. AI makes this worse - it will mirror whatever inconsistency it sees. Agree on the rules first, then enforce them automatically.
 
 ---
 
@@ -9,7 +9,7 @@
 - Establish a single, consistent coding style across the entire codebase
 - Automate enforcement so standards don't depend on discipline
 - Give AI tools a consistent pattern to learn from and generate against
-- Reduce cognitive overhead during code reviews — style is not a debate
+- Reduce cognitive overhead during code reviews - style is not a debate
 
 ---
 
@@ -25,7 +25,7 @@ PSR-12 is the PHP community standard for code formatting. Laravel follows it by 
 - Type hints on all method parameters and return types
 
 **Why it matters for AI:**
-> When your codebase is consistent, the AI generates consistent code. When it's not, the AI guesses — and guesses wrong half the time.
+> When your codebase is consistent, the AI generates consistent code. When it's not, the AI guesses - and guesses wrong half the time.
 
 ---
 
@@ -51,7 +51,7 @@ These are non-negotiable Laravel conventions. Deviating from them breaks framewo
 
 ## Laravel Pint Setup
 
-[Laravel Pint](https://laravel.com/docs/pint) is the official Laravel code formatter. It enforces PSR-12 automatically — no arguments, no manual fixing.
+[Laravel Pint](https://laravel.com/docs/pint) is the official Laravel code formatter. It enforces PSR-12 automatically - no arguments, no manual fixing.
 
 **Install:**
 ```bash
@@ -80,7 +80,7 @@ composer require laravel/pint --dev
 }
 ```
 
-**Enforce on every commit** via a pre-commit hook — see [1.3 Tooling Selection → Pre-commit Hooks](03-tooling-selection.md#pre-commit-hooks) for the full setup including PHPStan and auto-install via composer.
+**Enforce on every commit** via a pre-commit hook - see [1.3 Tooling Selection → Pre-commit Hooks](03-tooling-selection.md#pre-commit-hooks) for the full setup including PHPStan and auto-install via composer.
 
 ---
 
@@ -88,7 +88,7 @@ composer require laravel/pint --dev
 
 Beyond formatting, agree on these structural conventions as a team:
 
-### Controllers — Keep Them Thin
+### Controllers - Keep Them Thin
 Controllers receive a request, delegate to a service or action, and return a response. That's it.
 
 ```php
@@ -99,7 +99,7 @@ public function store(StoreOrderRequest $request, CreateOrder $action): JsonResp
     return response()->json($order, 201);
 }
 
-// ❌ Fat controller — logic belongs elsewhere
+// ❌ Fat controller - logic belongs elsewhere
 public function store(Request $request): JsonResponse
 {
     $validated = $request->validate([...]);
@@ -109,15 +109,15 @@ public function store(Request $request): JsonResponse
 }
 ```
 
-### Validation — Always Use Form Requests
+### Validation - Always Use Form Requests
 Never validate inline inside a controller. Create a dedicated Form Request class.
 
 ```bash
 php artisan make:request StoreOrderRequest
 ```
 
-### Business Logic — Services or Actions
-Place domain logic in `app/Services/` or `app/Actions/` — never in controllers or models.
+### Business Logic - Services or Actions
+Place domain logic in `app/Services/` or `app/Actions/` - never in controllers or models.
 
 ### Avoid Query Logic in Controllers
 Use Eloquent scopes or repositories. No raw `DB::select()` queries in controllers.
@@ -146,7 +146,7 @@ trim_trailing_whitespace = true
 trim_trailing_whitespace = false
 ```
 
-**For VS Code** — add a shared `.vscode/settings.json` to the repo:
+**For VS Code** - add a shared `.vscode/settings.json` to the repo:
 ```json
 {
     "editor.formatOnSave": false,
@@ -159,11 +159,11 @@ trim_trailing_whitespace = false
 }
 ```
 
-**For PhpStorm** — share the code style config via `.idea/codeStyles/` committed to git.
+**For PhpStorm** - share the code style config via `.idea/codeStyles/` committed to git.
 
 ---
 
-## Checklist — Done When
+## Checklist - Done When
 
 - [ ] `pint.json` committed to the repo
 - [ ] `.editorconfig` committed to the repo

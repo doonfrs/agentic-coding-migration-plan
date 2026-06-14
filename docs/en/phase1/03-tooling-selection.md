@@ -1,8 +1,8 @@
 # 1.3 Tooling Selection
 
-> Standards without tools are just intentions. Tools enforce standards automatically — even when the team is tired, rushed, or doesn't remember the rules.
+> Standards without tools are just intentions. Tools enforce standards automatically - even when the team is tired, rushed, or doesn't remember the rules.
 
-> **Split with 1.2:** Code style *rules* live in [1.2 Laravel Standards](02-laravel-standards.md). The *tools that enforce them* — IDE, extensions, pre-commit, static analysis — live here.
+> **Split with 1.2:** Code style *rules* live in [1.2 Laravel Standards](02-laravel-standards.md). The *tools that enforce them* - IDE, extensions, pre-commit, static analysis - live here.
 
 ---
 
@@ -10,7 +10,7 @@
 
 - Select an IDE that integrates AI natively and works well with Laravel
 - Pick the AI assistant the team will actually use day-to-day
-- Auto-format on save, auto-check on commit — zero manual effort required
+- Auto-format on save, auto-check on commit - zero manual effort required
 - Make it structurally impossible to push code that fails style or static analysis
 
 ---
@@ -23,23 +23,23 @@
 |-----|-----------|------------|
 | **Anti-gravity** | AI-native, agentic workflows built-in, VS Code compatible, free | Newer, smaller community |
 | Cursor | AI-integrated, familiar VS Code base, popular | Paid, AI is a subscription layer on top of the editor |
-| VS Code | Free, huge extension ecosystem | No native AI — fully reliant on extensions |
+| VS Code | Free, huge extension ecosystem | No native AI - fully reliant on extensions |
 | PhpStorm | Best PHP/Laravel code intelligence | Paid, heavy, not AI-native |
 
 ### Recommendation: Anti-gravity
 
-Anti-gravity is an AI-native editor designed from the ground up for agent-assisted coding. Unlike Cursor — which layers AI on top of VS Code — Anti-gravity treats AI as a first-class part of the workflow.
+Anti-gravity is an AI-native editor designed from the ground up for agent-assisted coding. Unlike Cursor - which layers AI on top of VS Code - Anti-gravity treats AI as a first-class part of the workflow.
 
 **Key advantages for this migration:**
 
-- Built for agentic coding — aligns directly with Phase 3 goals
-- VS Code extension compatibility — existing extensions and settings still work
-- Free — no per-seat subscription cost for the team
+- Built for agentic coding - aligns directly with Phase 3 goals
+- VS Code extension compatibility - existing extensions and settings still work
+- Free - no per-seat subscription cost for the team
 - Encourages AI-first thinking from day one
 
 ### Why Not Cursor?
 
-Cursor is a solid choice and widely adopted — but it positions itself as the AI product, not just the tool. The team ends up dependent on Cursor's AI subscription rather than building skills with a model-agnostic workflow.
+Cursor is a solid choice and widely adopted - but it positions itself as the AI product, not just the tool. The team ends up dependent on Cursor's AI subscription rather than building skills with a model-agnostic workflow.
 
 > Anti-gravity + Claude Code = a stack you control. Cursor = a stack someone else controls.
 
@@ -51,21 +51,21 @@ Cursor is a solid choice and widely adopted — but it positions itself as the A
 
 | | **Claude Code** | Cursor AI |
 |--|-----------------|-----------|
-| Model | Claude Opus 4.6 — best in class for code | GPT-4o / Claude (their choice) |
+| Model | Claude Opus 4.6 - best in class for code | GPT-4o / Claude (their choice) |
 | Interface | Terminal + IDE agent | Embedded in Cursor only |
-| Agentic capability | Full agent — reads, edits, runs commands | Composer mode (limited) |
+| Agentic capability | Full agent - reads, edits, runs commands | Composer mode (limited) |
 | Context window | Up to 1M tokens | Limited context |
 | Portability | Works in any terminal, any repo | Cursor-only |
 | Cost | Per token (pay for what you use) | Monthly subscription |
-| Team control | Full — you choose the model and prompts | Locked to Cursor's implementation |
+| Team control | Full - you choose the model and prompts | Locked to Cursor's implementation |
 
 ### Recommendation: Claude Code
 
-Claude Code is the AI tool for this migration. It runs as an agent — not just autocomplete — which means it can read your codebase, plan changes, run tests, and iterate. That's the foundation of Phase 3.
+Claude Code is the AI tool for this migration. It runs as an agent - not just autocomplete - which means it can read your codebase, plan changes, run tests, and iterate. That's the foundation of Phase 3.
 
 ### Claude Code: Two Ways to Use It
 
-Claude Code comes in two forms — use both, they complement each other.
+Claude Code comes in two forms - use both, they complement each other.
 
 #### 1. Claude Code VS Code Extension (Primary)
 
@@ -77,7 +77,7 @@ The extension integrates Claude Code into the IDE sidebar. You interact with it 
 - Asking questions about the file you're looking at
 - Requesting targeted edits with full IDE context (open tabs, selection, errors)
 - Reviewing and accepting/rejecting AI changes inline
-- Daily coding — the low-friction way to work with AI
+- Daily coding - the low-friction way to work with AI
 
 **Install in VS Code / Anti-gravity:**
 ```
@@ -100,7 +100,7 @@ claude
 
 **Best for:**
 - Complex, multi-step tasks that span many files
-- Agentic workflows — let Claude read, edit, run, and iterate autonomously
+- Agentic workflows - let Claude read, edit, run, and iterate autonomously
 - Running in CI or scripted pipelines
 - Tasks where you describe the goal and let the agent work through it
 
@@ -110,19 +110,19 @@ claude "Refactor the OrderController to use Form Requests and an action class.
        Follow the conventions in CLAUDE.md. Run Pint after."
 ```
 
-### CLI vs Extension — Quick Comparison
+### CLI vs Extension - Quick Comparison
 
 | | **VS Code Extension** | **CLI (Terminal)** |
 |--|----------------------|--------------------|
 | Interface | IDE sidebar | Terminal |
 | Best for | Targeted edits, questions, inline review | Long autonomous tasks, multi-file refactors |
 | Context | Current file + open tabs | Entire project (you control scope) |
-| Control | High — you see every change | Variable — agent works independently |
+| Control | High - you see every change | Variable - agent works independently |
 | Phase fit | Phase 2 (supervised) | Phase 3 (agentic) |
 
 > Start the team on the **extension** in Phase 2. Introduce the **CLI agent** in Phase 3 as confidence grows.
 
-> For a comprehensive deep dive into all Claude Code features — Planning Mode, Edit Mode, Skills, Slash Commands, CLAUDE.md, MCP, Hooks, and more — see [1.5 Claude Code Deep Dive](05-claude-code.md).
+> For a comprehensive deep dive into all Claude Code features - Planning Mode, Edit Mode, Skills, Slash Commands, CLAUDE.md, MCP, Hooks, and more - see [1.5 Claude Code Deep Dive](05-claude-code.md).
 
 ---
 
@@ -151,11 +151,11 @@ claude config set model claude-opus-4-6
 
 **Why Claude Opus 4.6 wins for agentic Laravel development:**
 
-- **Best at following complex instructions** — multi-step refactors, architecture decisions, long tasks stay on track
-- **1M token context** — can hold an entire feature's worth of files in one session
-- **Full agentic tool use** — reads files, runs commands, writes tests, iterates without constant prompting
-- **Respects your standards** — given a `CLAUDE.md` with your team conventions, it follows them consistently
-- **Safety-first reasoning** — less likely to hallucinate breaking changes
+- **Best at following complex instructions** - multi-step refactors, architecture decisions, long tasks stay on track
+- **1M token context** - can hold an entire feature's worth of files in one session
+- **Full agentic tool use** - reads files, runs commands, writes tests, iterates without constant prompting
+- **Respects your standards** - given a `CLAUDE.md` with your team conventions, it follows them consistently
+- **Safety-first reasoning** - less likely to hallucinate breaking changes
 
 ### When to Use Sonnet Instead
 
@@ -220,7 +220,7 @@ Format on save with Pint, PHPStan enabled inline:
 }
 ```
 
-*Commit `.vscode/settings.json` — shared IDE config is part of the project, not personal preference.*
+*Commit `.vscode/settings.json` - shared IDE config is part of the project, not personal preference.*
 
 ---
 
@@ -268,7 +268,7 @@ The hook runs automatically on every `git commit`. It blocks the commit if Pint 
 
 ### The Hook File
 
-Store hooks in `.githooks/` (tracked by git — so every developer gets them automatically via composer):
+Store hooks in `.githooks/` (tracked by git - so every developer gets them automatically via composer):
 
 **`.githooks/pre-commit`:**
 ```bash
@@ -338,15 +338,15 @@ cat .git/hooks/pre-commit
 
 ---
 
-## Checklist — Done When
+## Checklist - Done When
 
 - [ ] Anti-gravity installed on all dev machines
 - [ ] Claude Code installed (`npm install -g @anthropic-ai/claude-code`)
-- [ ] `.vscode/extensions.json` committed — team prompted to install extensions
-- [ ] `.vscode/settings.json` committed — format on save active for PHP
+- [ ] `.vscode/extensions.json` committed - team prompted to install extensions
+- [ ] `.vscode/settings.json` committed - format on save active for PHP
 - [ ] PHPStan + Larastan installed, `phpstan.neon` committed
 - [ ] `.githooks/pre-commit` committed and executable
 - [ ] Composer `post-install-cmd` / `post-update-cmd` scripts added
-- [ ] Every dev has run `composer install` — hook is active on their machine
+- [ ] Every dev has run `composer install` - hook is active on their machine
 - [ ] Test commit rejected when Pint or PHPStan fails
 - [ ] PHPStan level set and agreed on by the team

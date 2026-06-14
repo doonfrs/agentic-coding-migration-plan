@@ -17,19 +17,19 @@ theme:
 
 nav:
   - Overview: index.md
-  - Phase 1 — Stabilize & Standardize:
+  - Phase 1 - Stabilize & Standardize:
     - 1.1 Codebase & Architecture Review: phase1/01-codebase-architecture.md
     - 1.2 Laravel Standards: phase1/02-laravel-standards.md
     - 1.3 Tooling Selection: phase1/03-tooling-selection.md
     - 1.4 Git Workflow: phase1/04-git-workflow.md
     - 1.5 Claude Code Deep Dive: phase1/05-claude-code.md
     - 1.6 Deployment: phase1/06-deployment.md
-  - Phase 2 — Safety Nets & Supervised AI:
+  - Phase 2 - Safety Nets & Supervised AI:
     - 2.1 Testing: phase2/01-testing.md
     - 2.2 CI Pipeline: phase2/02-ci-pipeline.md
     - 2.3 Environment: phase2/03-environment.md
     - 2.4 Supervised AI Introduction: phase2/04-supervised-ai.md
-  - Phase 3 — Go Agentic:
+  - Phase 3 - Go Agentic:
     - 3.1 Agentic Methodology: phase3/01-agentic-methodology.md
     - 3.2 CI/CD Maturity: phase3/02-cicd-maturity.md
     - 3.3 Team Enablement: phase3/03-team-enablement.md

@@ -1,10 +1,10 @@
 # Agentic Coding Migration Roadmap
 
-> A structured 3-month plan to safely transition a Laravel team from non-standardized development to AI-assisted, agent-driven coding — without breaking what's already in production.
+> A structured 3-month plan to safely transition a Laravel team from non-standardized development to AI-assisted, agent-driven coding - without breaking what's already in production.
 
 ---
 
-## Phase 1 — Stabilize & Standardize  ·  Month 1
+## Phase 1 - Stabilize & Standardize  ·  Month 1
 
 **Goal:** Deliver the current project on time while establishing the coding standards and Git discipline that make AI assistance safe and effective.
 
@@ -18,11 +18,11 @@
 - [1.5 Claude Code Deep Dive](./phase1/05-claude-code.md)
 - [1.6 Deployment](./phase1/06-deployment.md)
 
-**Outcome:** Stable project + consistent codebase conventions + disciplined Git workflow — a clean foundation for AI
+**Outcome:** Stable project + consistent codebase conventions + disciplined Git workflow - a clean foundation for AI
 
 ---
 
-## Phase 2 — Safety Nets & Supervised AI  ·  Month 2
+## Phase 2 - Safety Nets & Supervised AI  ·  Month 2
 
 **Goal:** Build the automated safety nets that allow the team to use AI assistance without fear of regression, and introduce AI as a supervised junior collaborator.
 
@@ -35,7 +35,7 @@
 
 ---
 
-## Phase 3 — Go Agentic  ·  Month 3
+## Phase 3 - Go Agentic  ·  Month 3
 
 **Goal:** Establish a structured Agentic Coding methodology the team can operate independently, with defined agent roles, KPIs, and internal policies.
 
@@ -44,14 +44,14 @@
 - [3.3 Team Enablement](./phase3/03-team-enablement.md)
 - [3.4 Governance](./phase3/04-governance.md)
 
-**Outcome:** Fully operational agentic team — independent, policy-driven, measurable
+**Outcome:** Fully operational agentic team - independent, policy-driven, measurable
 
 ---
 
 ## Working Method
 
 - 2 weekly supervision meetings (review progress, unblock, hands-on coaching)
-- Quality and stability before speed — no shortcuts
+- Quality and stability before speed - no shortcuts
 - Mix of theory sessions and real task practice
 - Direct intervention when blockers arise
 - Each phase ends with a team retrospective before moving forward

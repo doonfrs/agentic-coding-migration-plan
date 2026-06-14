@@ -1,6 +1,6 @@
 # 1.4 Git Workflow
 
-> A broken git workflow is the first thing that breaks agentic coding. If branches are chaotic and commits are meaningless, the AI has no reliable history to reason about — and neither does the team.
+> A broken git workflow is the first thing that breaks agentic coding. If branches are chaotic and commits are meaningless, the AI has no reliable history to reason about - and neither does the team.
 
 ---
 
@@ -40,7 +40,7 @@ main
 - Always lowercase, words separated by hyphens
 - Always start with the type prefix (`feature/`, `fix/`, `chore/`, `hotfix/`)
 - Include the ticket ID when one exists
-- Keep the description short — under 5 words
+- Keep the description short - under 5 words
 - No slashes except the prefix separator
 
 **Good:**
@@ -60,10 +60,10 @@ feature/added-some-stuff-for-the-payment-thing
 
 ### Branch Lifecycle
 
-1. Create from `main` — never from another feature branch
+1. Create from `main` - never from another feature branch
 2. Work in small, frequent commits
 3. Open a PR when ready for review
-4. Merge via PR — never directly to `main`
+4. Merge via PR - never directly to `main`
 5. Delete the branch after merge
 
 ---
@@ -72,7 +72,7 @@ feature/added-some-stuff-for-the-payment-thing
 
 ### Format: Conventional Commits
 
-Use [Conventional Commits](https://www.conventionalcommits.org/) — a widely adopted standard that makes history readable and enables automated changelogs.
+Use [Conventional Commits](https://www.conventionalcommits.org/) - a widely adopted standard that makes history readable and enables automated changelogs.
 
 ```
 <type>(<scope>): <short description>
@@ -92,7 +92,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) — a widely ad
 | `test` | Adding or updating tests |
 | `chore` | Build process, dependency updates, config changes |
 | `docs` | Documentation only |
-| `style` | Code style changes (Pint formatting, whitespace — no logic change) |
+| `style` | Code style changes (Pint formatting, whitespace - no logic change) |
 | `perf` | Performance improvement |
 | `revert` | Reverting a prior commit |
 
@@ -152,7 +152,7 @@ Closes PROJ-312
 - Every change to `main` must go through a PR
 - Minimum 1 reviewer approval before merging
 - All automated checks must pass (Pint, PHPStan, tests)
-- PRs should be small and focused — one logical change per PR
+- PRs should be small and focused - one logical change per PR
 - Draft PRs are encouraged for early feedback
 
 ### PR Title
@@ -200,22 +200,22 @@ Closes #TICKET-ID
 
 **For reviewers:**
 - Review within 1 business day
-- Focus on logic, architecture, and correctness — not style (that's Pint's job)
+- Focus on logic, architecture, and correctness - not style (that's Pint's job)
 - Approve if the code is correct and follows conventions, even if you'd do it differently
 - Leave actionable comments: "Consider X because Y" not just "I don't like this"
 
 **For authors:**
-- Respond to all comments — either fix or explain why not
+- Respond to all comments - either fix or explain why not
 - Don't merge without approval
-- Keep PRs under 400 lines of change where possible — large PRs get poor reviews
+- Keep PRs under 400 lines of change where possible - large PRs get poor reviews
 
 ### Merging
 
-Use **Squash and Merge** for feature branches — keeps `main` history clean with one commit per feature.
+Use **Squash and Merge** for feature branches - keeps `main` history clean with one commit per feature.
 
 Use **Merge Commit** only for hotfixes where you want to preserve the exact commit history for a post-mortem.
 
-Never use **Rebase and Merge** — it rewrites history and breaks `git bisect`.
+Never use **Rebase and Merge** - it rewrites history and breaks `git bisect`.
 
 ---
 
@@ -245,15 +245,15 @@ Enable all settings listed above.
 
 ### Why This Matters for Agentic Coding
 
-When Claude Code operates in agentic mode (Phase 3), it can create branches and open PRs. Branch protection ensures that even if an agent makes a mistake, it cannot merge its own work without human review. The CI checks act as a safety net — the agent must produce passing code, not just plausible-looking code.
+When Claude Code operates in agentic mode (Phase 3), it can create branches and open PRs. Branch protection ensures that even if an agent makes a mistake, it cannot merge its own work without human review. The CI checks act as a safety net - the agent must produce passing code, not just plausible-looking code.
 
 ---
 
-## Checklist — Done When
+## Checklist - Done When
 
 - [ ] Branching strategy documented and shared with team
 - [ ] All developers understand the branch naming convention
-- [ ] Conventional Commits convention adopted — team has reference card
+- [ ] Conventional Commits convention adopted - team has reference card
 - [ ] PR template committed to `.github/pull_request_template.md`
 - [ ] Branch protection rules configured on `main`
 - [ ] CI checks wired to branch protection (see [1.6 Deployment](06-deployment.md))

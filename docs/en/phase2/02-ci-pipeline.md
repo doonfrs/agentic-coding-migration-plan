@@ -1,6 +1,6 @@
 # 2.2 CI Pipeline
 
-> A pre-commit hook catches mistakes on the developer's machine. A CI pipeline catches them everywhere else — including on the AI agent's machine. If the pipeline doesn't run automatically on every PR, there is no safety net.
+> A pre-commit hook catches mistakes on the developer's machine. A CI pipeline catches them everywhere else - including on the AI agent's machine. If the pipeline doesn't run automatically on every PR, there is no safety net.
 
 ---
 
@@ -8,7 +8,7 @@
 
 - Configure Bitbucket Pipelines to run on every pull request automatically
 - Enforce code style (Pint), static analysis (PHPStan), and tests (Pest) in CI
-- Block merges when any check fails — no exceptions
+- Block merges when any check fails - no exceptions
 - Establish a coverage gate that prevents regressions
 - Create the automated feedback loop that makes AI-assisted coding safe in Phase 3
 - Keep pipeline execution under 5 minutes to avoid slowing down the team
@@ -17,14 +17,14 @@
 
 ## Why CI Before AI
 
-Pre-commit hooks (set up in [1.3 Tooling](../phase1/03-tooling-selection.md)) run on the developer's local machine. They work — until they don't:
+Pre-commit hooks (set up in [1.3 Tooling](../phase1/03-tooling-selection.md)) run on the developer's local machine. They work - until they don't:
 
 - A developer skips them (`--no-verify`)
 - A new team member hasn't run `composer install` yet
 - The AI agent creates a branch and pushes directly
 - Someone commits from a machine without the hooks installed
 
-CI is the second wall. It runs in a clean environment, every time, on every PR. No one can skip it. No one can forget it. The pipeline doesn't care who wrote the code — human or AI. It checks everything the same way.
+CI is the second wall. It runs in a clean environment, every time, on every PR. No one can skip it. No one can forget it. The pipeline doesn't care who wrote the code - human or AI. It checks everything the same way.
 
 In Phase 3, the AI agent will push code, open PRs, and iterate based on CI feedback. If the pipeline isn't in place before then, you're giving an AI commit access with no guardrails.
 
@@ -109,11 +109,11 @@ PR opened / updated
   Any fail? → ❌ Merge blocked
 ```
 
-The install step runs first and produces an artifact (`vendor/`). The three check steps run in parallel — they share the artifact but don't depend on each other. This keeps the pipeline fast.
+The install step runs first and produces an artifact (`vendor/`). The three check steps run in parallel - they share the artifact but don't depend on each other. This keeps the pipeline fast.
 
 ### Environment File for CI
 
-Create `.env.testing` in the project root (commit it — it contains no secrets):
+Create `.env.testing` in the project root (commit it - it contains no secrets):
 
 ```env
 APP_NAME=Laravel
@@ -136,7 +136,7 @@ This mirrors the `phpunit.xml` env settings from [2.1 Testing](01-testing.md) bu
 
 ---
 
-## Pipeline Stages — In Detail
+## Pipeline Stages - In Detail
 
 ### Stage 1: Code Style (Pint)
 
@@ -151,7 +151,7 @@ This mirrors the `phpunit.xml` env settings from [2.1 Testing](01-testing.md) bu
 
 **Why run Pint in CI if we already have a pre-commit hook?**
 
-Because the pre-commit hook only runs on the developer's machine. CI is the enforcer of last resort. If someone bypasses the hook — intentionally or accidentally — CI catches it.
+Because the pre-commit hook only runs on the developer's machine. CI is the enforcer of last resort. If someone bypasses the hook - intentionally or accidentally - CI catches it.
 
 **When it fails:** the developer runs `./vendor/bin/pint` locally, commits the fix, and pushes again.
 
@@ -166,7 +166,7 @@ Because the pre-commit hook only runs on the developer's machine. CI is the enfo
 
 PHPStan reads the `phpstan.neon` configuration committed to the repo (set up in [1.3 Tooling](../phase1/03-tooling-selection.md)). The `--memory-limit=512M` flag prevents out-of-memory crashes on larger codebases.
 
-**When it fails:** the developer fixes the reported errors locally. PHPStan errors are real bugs — type mismatches, undefined methods, impossible conditions.
+**When it fails:** the developer fixes the reported errors locally. PHPStan errors are real bugs - type mismatches, undefined methods, impossible conditions.
 
 ### Stage 3: Tests (Pest)
 
@@ -179,15 +179,15 @@ PHPStan reads the `phpstan.neon` configuration committed to the repo (set up in 
       - ./vendor/bin/pest --coverage --min=60
 ```
 
-This runs the full test suite and enforces a minimum 60% overall coverage. If coverage drops below 60%, the step fails — even if all tests pass.
+This runs the full test suite and enforces a minimum 60% overall coverage. If coverage drops below 60%, the step fails - even if all tests pass.
 
-**Why `cp .env.testing .env`?** Laravel needs an `.env` file to boot. In CI, there's no `.env` — we copy the testing config into place.
+**Why `cp .env.testing .env`?** Laravel needs an `.env` file to boot. In CI, there's no `.env` - we copy the testing config into place.
 
 **Why `php artisan key:generate`?** Laravel requires `APP_KEY` to be set. Generating it in CI is safe because this key is never used in production.
 
 ---
 
-## PHPStan Baseline — Dealing with Legacy Code
+## PHPStan Baseline - Dealing with Legacy Code
 
 If you're adding CI to an existing project, PHPStan will likely report hundreds of errors on legacy code that nobody is going to fix right now. The solution is a **baseline**.
 
@@ -197,7 +197,7 @@ If you're adding CI to an existing project, PHPStan will likely report hundreds 
 ./vendor/bin/phpstan analyse --generate-baseline
 ```
 
-This creates `phpstan-baseline.neon` — a file that lists every current error and tells PHPStan to ignore them. New code must be clean; old errors are tracked but don't block CI.
+This creates `phpstan-baseline.neon` - a file that lists every current error and tells PHPStan to ignore them. New code must be clean; old errors are tracked but don't block CI.
 
 ### Update phpstan.neon
 
@@ -225,10 +225,10 @@ Over time, reduce the baseline:
 
 1. Start at PHPStan **level 5** with a baseline
 2. When a developer touches a file, fix the PHPStan errors in that file
-3. Regenerate the baseline periodically — it should shrink
+3. Regenerate the baseline periodically - it should shrink
 4. Every quarter, consider bumping the level: 5 → 6 → 7 → 8
 
-**Never increase the level and regenerate the baseline at the same time** — that hides new errors behind the baseline. Increase the level, fix the new errors, then commit.
+**Never increase the level and regenerate the baseline at the same time** - that hides new errors behind the baseline. Increase the level, fix the new errors, then commit.
 
 ---
 
@@ -248,7 +248,7 @@ The `--min=60` flag in the Pest step enforces overall coverage:
 | New code coverage | 80% recommended | Code review (manual) |
 | AI-generated code | 100% of changed lines | Code review (manual) |
 
-The 60% overall threshold is enforced automatically. The 80% and 100% targets for new/AI code are enforced through code review — Pest doesn't distinguish "new" from "old" code automatically.
+The 60% overall threshold is enforced automatically. The 80% and 100% targets for new/AI code are enforced through code review - Pest doesn't distinguish "new" from "old" code automatically.
 
 ### Coverage Reports
 
@@ -275,7 +275,7 @@ Reviewers can download the report from the Bitbucket pipeline results to see exa
 | Phase 2 end | 70% | Feature tests added for critical flows |
 | Phase 3 | 80% | AI generates tests for all new code |
 
-Increase the `--min` value as coverage grows naturally. Don't chase numbers — let the tests add value first.
+Increase the `--min` value as coverage grows naturally. Don't chase numbers - let the tests add value first.
 
 ---
 
@@ -290,7 +290,7 @@ Configure branch permissions so that no code reaches `main` without passing the 
 | Setting | Value |
 |---------|-------|
 | Branch | `main` |
-| Write access | No direct pushes — PR only |
+| Write access | No direct pushes - PR only |
 | Merge checks | All builds must pass |
 | Minimum approvals | 1 |
 | Merge strategy | Squash (default) |
@@ -300,18 +300,18 @@ Configure branch permissions so that no code reaches `main` without passing the 
 Before any PR can merge to `main`:
 
 ```
-✅ Pint passes      — code is formatted
-✅ PHPStan passes   — no static analysis errors
-✅ Pest passes      — all tests green
-✅ Coverage ≥ 60%   — no coverage regression
-✅ 1 approval       — a human reviewed it
+✅ Pint passes      - code is formatted
+✅ PHPStan passes   - no static analysis errors
+✅ Pest passes      - all tests green
+✅ Coverage ≥ 60%   - no coverage regression
+✅ 1 approval       - a human reviewed it
 ```
 
 If any item fails, the merge button is disabled. No exceptions.
 
 ### Why This Matters
 
-This isn't bureaucracy — it's the mechanism that makes Phase 3 possible. When the AI agent opens a PR, it goes through the exact same gates as a human. The pipeline doesn't trust the AI. It verifies.
+This isn't bureaucracy - it's the mechanism that makes Phase 3 possible. When the AI agent opens a PR, it goes through the exact same gates as a human. The pipeline doesn't trust the AI. It verifies.
 
 ```
 AI writes code → pushes branch → opens PR
@@ -333,7 +333,7 @@ AI writes code → pushes branch → opens PR
 
 ### The Automated Feedback Loop
 
-In Phase 3, the CI pipeline becomes the AI agent's primary feedback mechanism. The agent doesn't just push code and hope — it reads the pipeline results and iterates.
+In Phase 3, the CI pipeline becomes the AI agent's primary feedback mechanism. The agent doesn't just push code and hope - it reads the pipeline results and iterates.
 
 ```
 ┌───────────────────────────────────────────┐
@@ -349,21 +349,21 @@ In Phase 3, the CI pipeline becomes the AI agent's primary feedback mechanism. T
 └───────────────────────────────────────────┘
 ```
 
-The pipeline is what makes this loop safe. Without it, step 6 doesn't exist — and the AI pushes broken code that a human has to debug manually.
+The pipeline is what makes this loop safe. Without it, step 6 doesn't exist - and the AI pushes broken code that a human has to debug manually.
 
 ### What CI Catches That Local Tests Might Miss
 
 | Issue | Local | CI |
 |-------|-------|-----|
-| Missing dependency (not committed) | ❌ Works locally | ✅ Fails — clean install |
-| Environment-specific bug | ❌ Works on dev machine | ✅ Fails — different environment |
-| Uncommitted file | ❌ Tests pass (file exists locally) | ✅ Fails — file not in repo |
+| Missing dependency (not committed) | ❌ Works locally | ✅ Fails - clean install |
+| Environment-specific bug | ❌ Works on dev machine | ✅ Fails - different environment |
+| Uncommitted file | ❌ Tests pass (file exists locally) | ✅ Fails - file not in repo |
 | Race condition in parallel tests | ❌ Passes sometimes | ✅ More likely to surface |
 | Coverage regression | ❌ Dev doesn't check | ✅ `--min` enforces it |
 
 ### Preparing the Pipeline for Phase 3
 
-The pipeline you build now in Phase 2 is the same pipeline the AI uses in Phase 3. No changes needed — by design. The only difference is who pushes the code.
+The pipeline you build now in Phase 2 is the same pipeline the AI uses in Phase 3. No changes needed - by design. The only difference is who pushes the code.
 
 ---
 
@@ -421,7 +421,7 @@ DB_PASSWORD=password
 | Composer install takes too long | Enable caching (already in the config above) |
 | PHPStan is slow on large codebase | Add `--memory-limit=1G` and consider splitting analysis |
 | Tests take over 5 minutes | Run Pest in parallel: `--parallel` |
-| Repeated package downloads | Composer cache key is tied to `composer.lock` — changes only when deps change |
+| Repeated package downloads | Composer cache key is tied to `composer.lock` - changes only when deps change |
 
 ### Parallel Test Execution
 
@@ -537,11 +537,11 @@ pipelines:
                 - coverage-report/**
 ```
 
-The `branches.main` section runs the same checks after merge — plus generates a coverage report artifact. This catches any issues that slip through (e.g., merge conflicts that introduce bugs).
+The `branches.main` section runs the same checks after merge - plus generates a coverage report artifact. This catches any issues that slip through (e.g., merge conflicts that introduce bugs).
 
 ---
 
-## Checklist — Done When
+## Checklist - Done When
 
 - [ ] `bitbucket-pipelines.yml` committed to the repo
 - [ ] `.env.testing` committed (no secrets)

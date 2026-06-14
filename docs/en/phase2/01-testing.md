@@ -1,6 +1,6 @@
 # 2.1 Testing
 
-> AI writes code 10x faster than a developer — but it has no idea if the code actually works. Tests are the only thing standing between AI-generated code and production bugs. Without them, speed is just a faster way to break things.
+> AI writes code 10x faster than a developer - but it has no idea if the code actually works. Tests are the only thing standing between AI-generated code and production bugs. Without them, speed is just a faster way to break things.
 
 ---
 
@@ -18,9 +18,9 @@
 
 AI generates plausible code, not correct code. It will write a function that looks right, passes a quick visual scan, and breaks silently on an edge case the AI never considered.
 
-Without tests, the only verification is manual QA — clicking through the app, checking pages, eyeballing data. That doesn't scale when AI is producing code at 10x the rate a developer does.
+Without tests, the only verification is manual QA - clicking through the app, checking pages, eyeballing data. That doesn't scale when AI is producing code at 10x the rate a developer does.
 
-Tests create a **contract**. The developer defines the expected behavior; the code (whether written by a human or AI) must satisfy it. If the test passes, the behavior is correct. If it fails, the code is wrong — regardless of who or what wrote it.
+Tests create a **contract**. The developer defines the expected behavior; the code (whether written by a human or AI) must satisfy it. If the test passes, the behavior is correct. If it fails, the code is wrong - regardless of who or what wrote it.
 
 In Phase 3, the AI agent will run the test suite after every code change automatically. But first, the tests need to exist. That's what this phase delivers.
 
@@ -34,7 +34,7 @@ In Phase 3, the AI agent will run the test suite after every code change automat
 |--------|---------|------|
 | Syntax | Verbose, class-based | Expressive, closure-based |
 | Learning curve | Steeper | Gentle |
-| AI compatibility | Good | Excellent — less boilerplate for AI to generate |
+| AI compatibility | Good | Excellent - less boilerplate for AI to generate |
 | Laravel integration | Built-in | First-class via `pestphp/pest-plugin-laravel` |
 
 **Recommendation:** Use Pest. It generates cleaner output, requires less boilerplate, and AI assistants produce better Pest tests because the syntax is more concise.
@@ -82,9 +82,9 @@ uses(Tests\TestCase::class)->in('Unit');
 
 ---
 
-## Testing Strategy — Where to Start
+## Testing Strategy - Where to Start
 
-In a greenfield project, you'd start with unit tests and build up. In legacy code with zero tests, do the opposite — start broad, then go deep.
+In a greenfield project, you'd start with unit tests and build up. In legacy code with zero tests, do the opposite - start broad, then go deep.
 
 ### The Legacy Testing Pyramid
 
@@ -112,7 +112,7 @@ Don't try to unit-test legacy code that wasn't designed for it. Start with smoke
 
 ## Smoke Tests
 
-A smoke test hits every route in the application and asserts it doesn't return a 500 error. It doesn't check business logic — just that the page loads.
+A smoke test hits every route in the application and asserts it doesn't return a 500 error. It doesn't check business logic - just that the page loads.
 
 ### Public Routes
 
@@ -175,7 +175,7 @@ it('returns a successful response for authenticated GET routes', function () {
 
 ## Feature Tests
 
-Focus on money, auth, and data integrity — the areas where bugs cause real damage.
+Focus on money, auth, and data integrity - the areas where bugs cause real damage.
 
 ### What to Test First
 
@@ -303,11 +303,11 @@ it('throws exception for negative discount', function () {
 ./vendor/bin/pest --coverage --min=60
 ```
 
-Add to CI pipeline — see [2.2 CI Pipeline](02-ci-pipeline.md).
+Add to CI pipeline - see [2.2 CI Pipeline](02-ci-pipeline.md).
 
 ### What to Do and What to Avoid
 
-- ❌ Don't chase 100% coverage on legacy code — it's a time sink with diminishing returns
+- ❌ Don't chase 100% coverage on legacy code - it's a time sink with diminishing returns
 - ❌ Don't write tests for getters/setters or trivial code
 - ❌ Don't test framework internals (Laravel already tests those)
 - ✅ Focus coverage on business-critical paths
@@ -336,7 +336,7 @@ This is the core workflow for Phase 3 (agentic coding). See [2.4 Supervised AI I
 
 ### AI Writing Tests
 
-AI can also write tests — but the human must review the assertions:
+AI can also write tests - but the human must review the assertions:
 
 - ✅ AI is good at: generating test structure, boilerplate, edge cases
 - ❌ AI is bad at: knowing what the correct business behavior should be
@@ -344,14 +344,14 @@ AI can also write tests — but the human must review the assertions:
 
 ---
 
-## Checklist — Done When
+## Checklist - Done When
 
 - [ ] Pest installed and configured (`composer.json`, `Pest.php`, `phpunit.xml`)
-- [ ] Smoke test covers all GET routes — zero 500 errors
+- [ ] Smoke test covers all GET routes - zero 500 errors
 - [ ] Feature tests written for top 5 critical business flows
 - [ ] At least one unit test exists for a service or action class
 - [ ] Coverage report runs locally: `./vendor/bin/pest --coverage`
 - [ ] Coverage minimum set (60% overall, 80% for new code)
 - [ ] Team has run the test suite and understands how to write a new test
 - [ ] Test database configured (SQLite in-memory or dedicated DB)
-- [ ] CI pipeline configured to run tests on every PR — see [2.2 CI Pipeline](02-ci-pipeline.md)
+- [ ] CI pipeline configured to run tests on every PR - see [2.2 CI Pipeline](02-ci-pipeline.md)

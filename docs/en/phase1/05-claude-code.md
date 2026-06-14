@@ -1,6 +1,6 @@
 # 1.5 Claude Code Deep Dive
 
-> Claude Code is not autocomplete — it is a full coding agent that reads your codebase, plans changes, edits files, runs commands, and iterates. This section covers every feature your team needs to master.
+> Claude Code is not autocomplete - it is a full coding agent that reads your codebase, plans changes, edits files, runs commands, and iterates. This section covers every feature your team needs to master.
 
 > **Split with 1.3:** The *decision* to use Claude Code and the comparison with alternatives live in [1.3 Tooling Selection](03-tooling-selection.md). The *detailed feature reference* lives here.
 
@@ -17,7 +17,7 @@
 
 ## Terminal (CLI) vs VS Code Extension
 
-Claude Code comes in two forms. Use both — they complement each other.
+Claude Code comes in two forms. Use both - they complement each other.
 
 ### CLI (Terminal Agent)
 
@@ -42,7 +42,7 @@ Install from the marketplace: **Claude Code** by Anthropic.
 - Single-file edits with inline diff preview
 - Asking questions about the code you're looking at
 - Quick fixes where you want to review each change before accepting
-- Pair-programming style interaction — low friction, high control
+- Pair-programming style interaction - low friction, high control
 
 ### Running Both Simultaneously
 
@@ -57,7 +57,7 @@ Install from the marketplace: **Claude Code** by Anthropic.
 | Interface | IDE sidebar | Terminal |
 | Best for | Targeted edits, questions, inline review | Long autonomous tasks, multi-file refactors |
 | Context | Current file + open tabs | Entire project (you control scope) |
-| Control | High — you see every change | Variable — agent works independently |
+| Control | High - you see every change | Variable - agent works independently |
 | Phase fit | Phase 2 (supervised) | Phase 3 (agentic) |
 
 > Start the team on the **extension** in Phase 2. Introduce the **CLI agent** in Phase 3 as confidence grows.
@@ -75,7 +75,7 @@ Slash commands are typed directly in the Claude Code prompt. They control modes,
 | `/help` | Show all available commands and usage |
 | `/compact` | Compress conversation history to free up context window space |
 | `/clear` | Clear the entire conversation and start fresh |
-| `/status` | Show current session info — model, mode, token usage |
+| `/status` | Show current session info - model, mode, token usage |
 | `/cost` | Show token usage and cost for the current session |
 | `/btw` | Ask a side question without adding it to the main conversation context |
 | `/export` | Export the current conversation as plain text |
@@ -93,7 +93,7 @@ Slash commands are typed directly in the Claude Code prompt. They control modes,
 
 | Command | Description |
 |---------|-------------|
-| `/plan` | Enter Planning Mode — Claude explores and analyzes but does NOT edit files |
+| `/plan` | Enter Planning Mode - Claude explores and analyzes but does NOT edit files |
 | `/fast` | Toggle fast mode (same model, faster output) |
 
 ### Coding Workflows
@@ -144,7 +144,7 @@ Type `@` followed by a file path to explicitly reference a file in your prompt. 
 @app/Models/User.php what relationships does this model have?
 ```
 
-Claude reads the file immediately and answers based on its actual contents — no guessing.
+Claude reads the file immediately and answers based on its actual contents - no guessing.
 
 ### Practical Examples
 
@@ -159,13 +159,13 @@ Claude reads the file immediately and answers based on its actual contents — n
 ### Tips
 
 - You can `@`-mention multiple files in the same prompt
-- Works with directories too — `@app/Models/` adds all files in that directory
+- Works with directories too - `@app/Models/` adds all files in that directory
 - Great for ensuring Claude sees the exact file you're talking about, not a similarly named one
 - File autocomplete appears as you type after `@`
 
 ---
 
-## Skills — Custom Slash Commands
+## Skills - Custom Slash Commands
 
 ### What They Are
 
@@ -175,8 +175,8 @@ Skills are custom slash commands you create as markdown files. They let you defi
 
 | Location | Scope |
 |----------|-------|
-| `.claude/skills/` | Project skills — shared with the team via git |
-| `~/.claude/skills/` | Personal skills — available in all your projects |
+| `.claude/skills/` | Project skills - shared with the team via git |
+| `~/.claude/skills/` | Personal skills - available in all your projects |
 
 ### Creating a Skill
 
@@ -211,7 +211,7 @@ Now any team member can type `/lint` and Claude will execute this workflow.
 /skills
 ```
 
-Shows all skills available in the current session — built-in, project, and personal.
+Shows all skills available in the current session - built-in, project, and personal.
 
 ---
 
@@ -219,14 +219,14 @@ Shows all skills available in the current session — built-in, project, and per
 
 ### What It Is
 
-A read-only mode where Claude explores, analyzes, and designs an implementation plan — but does **NOT** edit any files. Think of it as "let the AI study the problem before touching anything."
+A read-only mode where Claude explores, analyzes, and designs an implementation plan - but does **NOT** edit any files. Think of it as "let the AI study the problem before touching anything."
 
 ### When to Use It
 
-- Before starting a complex refactor — let Claude map the codebase first
-- Architecture decisions — ask Claude to explore and recommend an approach
+- Before starting a complex refactor - let Claude map the codebase first
+- Architecture decisions - ask Claude to explore and recommend an approach
 - When you want analysis without risk of accidental changes
-- Understanding unfamiliar code — Claude reads and explains without modifying
+- Understanding unfamiliar code - Claude reads and explains without modifying
 
 ### How It Works
 
@@ -243,11 +243,11 @@ A read-only mode where Claude explores, analyzes, and designs an implementation 
 Show me which files are involved and what the migration steps would be.
 ```
 
-Claude will explore the codebase, identify all related files, and produce a step-by-step plan — without changing a single line.
+Claude will explore the codebase, identify all related files, and produce a step-by-step plan - without changing a single line.
 
 ---
 
-## Edit Mode — How Claude Changes Files
+## Edit Mode - How Claude Changes Files
 
 ### The Approve/Reject Flow
 
@@ -255,9 +255,9 @@ Every file edit Claude proposes goes through an approval cycle:
 
 1. Claude proposes a change as a diff (you see exactly what will change)
 2. You can **approve** (apply the change), **reject** (skip it), or **ask for revision**
-3. Rejected edits are not applied — Claude can try a different approach based on your feedback
+3. Rejected edits are not applied - Claude can try a different approach based on your feedback
 
-In the **VS Code Extension**, changes appear as inline diffs in the editor — just like a code review.
+In the **VS Code Extension**, changes appear as inline diffs in the editor - just like a code review.
 
 In the **CLI**, you see a terminal diff and confirm with `y` or `n`.
 
@@ -330,7 +330,7 @@ claude config set effort high
 
 ---
 
-## CLAUDE.md — Project Instructions
+## CLAUDE.md - Project Instructions
 
 ### What It Is
 
@@ -374,17 +374,17 @@ E-commerce platform built with Laravel 11, PHP 8.2, MySQL 8.
 | `app/Actions/CLAUDE.md` | Applies only within that directory (additive) |
 | `tests/CLAUDE.md` | Testing-specific instructions |
 
-Claude reads **all applicable** CLAUDE.md files for the current context — root + any subdirectory-level ones.
+Claude reads **all applicable** CLAUDE.md files for the current context - root + any subdirectory-level ones.
 
 ### Team Convention
 
-- **Commit** CLAUDE.md to the repository — it's shared team configuration
-- **Review** changes to CLAUDE.md in PRs — it shapes AI behavior for everyone
-- **Update** it as conventions evolve — it's a living document
+- **Commit** CLAUDE.md to the repository - it's shared team configuration
+- **Review** changes to CLAUDE.md in PRs - it shapes AI behavior for everyone
+- **Update** it as conventions evolve - it's a living document
 
 ---
 
-## `/init` — Project Initialization
+## `/init` - Project Initialization
 
 ### What It Is
 
@@ -402,7 +402,7 @@ An interactive setup wizard that creates a `CLAUDE.md` and basic configuration f
 /init
 ```
 
-Claude scans your project structure, detects the framework (e.g., Laravel), and generates a `CLAUDE.md` tailored to what it finds — including coding conventions, test commands, and architecture patterns.
+Claude scans your project structure, detects the framework (e.g., Laravel), and generates a `CLAUDE.md` tailored to what it finds - including coding conventions, test commands, and architecture patterns.
 
 > You can also run `claude --init` from the terminal to initialize without starting a full session.
 
@@ -443,8 +443,8 @@ The `.claude/` directory is the central configuration hub for Claude Code in you
 
 ### Relationship with CLAUDE.md
 
-- `CLAUDE.md` lives at the **project root** — it's the main instructions file
-- `.claude/` lives at the **project root** — it's the configuration directory
+- `CLAUDE.md` lives at the **project root** - it's the main instructions file
+- `.claude/` lives at the **project root** - it's the configuration directory
 - Both are loaded automatically at the start of every session
 - `CLAUDE.md` is for prose instructions; `.claude/` is for structured configuration
 
@@ -558,7 +558,7 @@ claude config set model claude-sonnet-4-6    # default to Sonnet
 
 ### What It Is
 
-MCP is a protocol that lets Claude connect to **external tools and data sources**. Think of it as "plugins" for Claude Code — extending what Claude can access beyond local files.
+MCP is a protocol that lets Claude connect to **external tools and data sources**. Think of it as "plugins" for Claude Code - extending what Claude can access beyond local files.
 
 ### Use Cases for Laravel Teams
 
@@ -589,7 +589,7 @@ MCP servers are defined in Claude Code's settings file:
 
 - Only connect MCP servers you trust
 - Review what permissions each server grants
-- MCP servers run locally — they do not send your data to Anthropic
+- MCP servers run locally - they do not send your data to Anthropic
 - Use read-only database connections for safety
 
 ---
@@ -628,9 +628,9 @@ Hooks are defined in Claude Code's settings:
 
 ### Why Hooks Matter
 
-- Enforce standards automatically — even when Claude forgets
-- Audit trail — log what Claude does for team review
-- Safety net — block dangerous operations before they happen
+- Enforce standards automatically - even when Claude forgets
+- Audit trail - log what Claude does for team review
+- Safety net - block dangerous operations before they happen
 
 ---
 
@@ -643,7 +643,7 @@ Git worktrees let you check out **multiple branches simultaneously** in separate
 ### Why Use Them with Claude Code
 
 - Work on a feature yourself while Claude refactors in another worktree
-- No branch switching — no stashing — no context loss
+- No branch switching - no stashing - no context loss
 - Each worktree has its own working directory but shares the git history
 
 ### Setup
@@ -684,7 +684,7 @@ Claude can spawn **sub-tasks** that run in parallel. Each subagent handles a spe
 - Exploring multiple independent areas simultaneously
 - Tasks where parallelism is safe (no file conflicts between subtasks)
 
-> You don't need to configure subagents — Claude uses them automatically when beneficial.
+> You don't need to configure subagents - Claude uses them automatically when beneficial.
 
 ---
 
@@ -696,7 +696,7 @@ Claude can spawn **sub-tasks** that run in parallel. Each subagent handles a spe
 - Every message, file read, and tool output consumes tokens
 - When context fills up, earlier conversation details get compressed automatically
 
-### /compact — Reclaim Context
+### /compact - Reclaim Context
 
 The `/compact` command compresses conversation history:
 
@@ -704,7 +704,7 @@ The `/compact` command compresses conversation history:
 - Discards verbose tool outputs and intermediate steps
 - Use it when Claude starts repeating itself or losing track
 
-### /compact with Instructions — Guided Compression
+### /compact with Instructions - Guided Compression
 
 You can tell `/compact` **what to focus on** when compressing:
 
@@ -720,7 +720,7 @@ This is useful when your session covered multiple topics but you only need to co
 
 | Practice | Why |
 |----------|-----|
-| Start focused — tell Claude exactly what you need | Avoids wasting context on exploration |
+| Start focused - tell Claude exactly what you need | Avoids wasting context on exploration |
 | Avoid reading unnecessary files | Each file read costs tokens |
 | Use `/compact` proactively during long sessions | Prevents context overflow |
 | Break very large tasks into multiple sessions | Better than one overloaded session |
@@ -729,11 +729,11 @@ This is useful when your session covered multiple topics but you only need to co
 
 ---
 
-## Session Management — Resume & Continue
+## Session Management - Resume & Continue
 
 ### What It Is
 
-Claude Code saves your conversation history locally. You can close a session and pick up exactly where you left off — even days later.
+Claude Code saves your conversation history locally. You can close a session and pick up exactly where you left off - even days later.
 
 ### Commands
 
@@ -745,10 +745,10 @@ Claude Code saves your conversation history locally. You can close a session and
 
 ### When It's Valuable
 
-- **Multi-day features** — close your laptop, come back tomorrow, `claude -c`
-- **Context preservation** — you spent 30 minutes building context, don't lose it
-- **Parallel work** — name sessions (`-n "auth"`, `-n "payments"`) and switch between them
-- **Interrupted work** — phone call, meeting, emergency — resume right where you stopped
+- **Multi-day features** - close your laptop, come back tomorrow, `claude -c`
+- **Context preservation** - you spent 30 minutes building context, don't lose it
+- **Parallel work** - name sessions (`-n "auth"`, `-n "payments"`) and switch between them
+- **Interrupted work** - phone call, meeting, emergency - resume right where you stopped
 
 ### Practical Workflow
 
@@ -769,7 +769,7 @@ claude -r order-refactor
 
 ## Useful Prompt Commands
 
-### `/btw` — Side Questions
+### `/btw` - Side Questions
 
 Ask a quick question without polluting the main conversation context. The answer is shown but not added to Claude's working memory.
 
@@ -779,7 +779,7 @@ Ask a quick question without polluting the main conversation context. The answer
 
 Use it when you need a quick answer mid-task without derailing Claude's focus on the current work.
 
-### `/export` — Export Conversation
+### `/export` - Export Conversation
 
 Save the entire conversation as a plain text file.
 
@@ -795,7 +795,7 @@ Save the entire conversation as a plain text file.
 - Archive a debugging session for future reference
 - Create training material from a Claude interaction
 
-### `/security-review` — Vulnerability Scan
+### `/security-review` - Vulnerability Scan
 
 Analyze your pending changes for security vulnerabilities before committing.
 
@@ -821,20 +821,20 @@ Claude reviews all staged and unstaged changes looking for:
 
 1. Claude reads the relevant files and builds a mental model of the code
 2. Plans the changes across all files (especially in Planning Mode)
-3. Proposes edits file by file — you review each diff
+3. Proposes edits file by file - you review each diff
 4. Tracks dependencies between files (e.g., renaming a method updates all call sites)
 
 ### Best Practices
 
 - **Give clear scope:** "Refactor the User module" not "fix everything"
-- **Use CLAUDE.md** to define the target architecture — Claude follows it
-- **Review multi-file diffs carefully** — check the edges (imports, type hints, references)
+- **Use CLAUDE.md** to define the target architecture - Claude follows it
+- **Review multi-file diffs carefully** - check the edges (imports, type hints, references)
 - **For very large refactors:** use Planning Mode first, then execute in phases
-- **Run tests after each phase** — catch issues early
+- **Run tests after each phase** - catch issues early
 
 ---
 
-## Checklist — Done When
+## Checklist - Done When
 
 - [ ] Every developer has used Claude Code CLI at least once
 - [ ] Every developer has used the VS Code Extension at least once
@@ -843,7 +843,7 @@ Claude reviews all staged and unstaged changes looking for:
 - [ ] Team knows how to use `@` file mentions to reference specific files
 - [ ] `CLAUDE.md` created and committed to the project repository
 - [ ] `CLAUDE.md` reviewed and agreed on by the team
-- [ ] `.claude/` directory structure understood — what to commit vs gitignore
+- [ ] `.claude/` directory structure understood - what to commit vs gitignore
 - [ ] Permissions configured appropriately for the current phase
 - [ ] Team knows how to use Planning Mode for exploration before editing
 - [ ] Team knows how to switch models with `/model`
